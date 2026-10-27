@@ -173,5 +173,93 @@ body {
 
   <h1> UIKI MODS </h1>
 
+    <script>
+const openSearch = document.getElementById('openSearch');
+const closeSearch = document.getElementById('closeSearch');
+const searchPanel = document.getElementById('searchPanel');
+const siteSearch = document.getElementById('siteSearch');
+const recentSearches = document.getElementById('recentSearches');
+const searchResults = document.getElementById('searchResults');
+
+function getRecent() {
+    try {
+        return JSON.parse(localStorage.getItem('uikiRecentSearches')) || [];
+    } catch {
+        return [];
+    }
+}
+
+function renderRecent() {
+    recentSearches.innerHTML = '';
+
+    getRecent().forEach(term => {
+        const button = document.createElement('button');
+        button.textContent = term;
+
+        button.addEventListener('click', () => {
+            siteSearch.value = term;
+            siteSearch.focus();
+            siteSearch.dispatchEvent(new Event('input'));
+        });
+
+        recentSearches.appendChild(button);
+    });
+}
+
+openSearch.addEventListener('click', () => {
+    searchPanel.classList.add('active');
+    renderRecent();
+    siteSearch.focus();
+});
+
+closeSearch.addEventListener('click', () => {
+    searchPanel.classList.remove('active');
+    siteSearch.value = '';
+    searchResults.textContent = '';
+});
+
+siteSearch.addEventListener('input', () => {
+    const term = siteSearch.value.trim().toLowerCase();
+    searchResults.innerHTML = '';
+
+    if (!term) return;
+
+    const items = document.querySelectorAll('[data-app-name]');
+    let found = 0;
+
+    items.forEach(item => {
+        const name = item.dataset.appName.toLowerCase();
+
+        if (name.includes(term)) {
+            item.style.display = '';
+            found++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+
+    const message = document.createElement('p');
+    message.textContent = found
+        ? found + ' app(s) found'
+        : 'No apps found';
+
+    searchResults.appendChild(message);
+});
+
+siteSearch.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+        const term = siteSearch.value.trim();
+        if (!term) return;
+
+        let recent = getRecent().filter(item => item !== term);
+        recent.unshift(term);
+        recent = recent.slice(0, 6);
+
+        localStorage.setItem('uikiRecentSearches', JSON.stringify(recent));
+        renderRecent();
+    }
+});
+</script>
+
 </body>
 </html>
