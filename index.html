@@ -259,5 +259,138 @@ siteSearch.addEventListener('keydown', event => {
 });
 </script>
 
+    <!-- Games & Apps Bottom Navigation -->
+<style>
+.bottom-navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 82px;
+    background: #17191c;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 99999;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.3);
+    border-top: 1px solid #292d32;
+    box-sizing: border-box;
+}
+
+.bottom-navigation .nav-item {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: #eeeeee;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-navigation .nav-icon {
+    width: 58px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    transition: background 0.2s ease;
+}
+
+.bottom-navigation .nav-icon svg {
+    width: 25px;
+    height: 25px;
+    fill: currentColor;
+}
+
+.bottom-navigation .nav-item.active {
+    color: #72baff;
+}
+
+.bottom-navigation .nav-item.active .nav-icon {
+    width: 120px;
+    max-width: 75%;
+    height: 38px;
+    background: #075b91;
+    color: #d9efff;
+}
+
+.bottom-navigation .nav-item:focus-visible {
+    outline: 2px solid #72baff;
+    outline-offset: -3px;
+}
+
+body {
+    padding-bottom: 95px !important;
+}
+</style>
+
+<nav class="bottom-navigation" aria-label="Main navigation">
+
+    <button class="nav-item active"
+            id="gamesTab"
+            type="button"
+            onclick="switchCategory('games')">
+
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 6h10a5 5 0 0 1 4.8 3.6l1.1 4.1a3 3 0 0 1-4.8 3l-2.6-2H8.5l-2.6 2a3 3 0 0 1-4.8-3l1.1-4.1A5 5 0 0 1 7 6zm1 3H6v2H4v2h2v2h2v-2h2v-2H8V9zm7 1a1.3 1.3 0 1 0 0 2.6A1.3 1.3 0 0 0 15 10zm3 3a1.3 1.3 0 1 0 0 2.6A1.3 1.3 0 0 0 18 13z"/>
+            </svg>
+        </span>
+
+        <span>Games</span>
+    </button>
+
+    <button class="nav-item"
+            id="appsTab"
+            type="button"
+            onclick="switchCategory('apps')">
+
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2.5"
+                 aria-hidden="true">
+                <rect x="3" y="3" width="6" height="6" rx="1"/>
+                <rect x="15" y="3" width="6" height="6" rx="1"/>
+                <rect x="3" y="15" width="6" height="6" rx="1"/>
+                <rect x="15" y="15" width="6" height="6" rx="1"/>
+            </svg>
+        </span>
+
+        <span>Apps</span>
+    </button>
+
+</nav>
+
+<script>
+function switchCategory(category) {
+
+    document.getElementById('gamesTab')
+        .classList.toggle('active', category === 'games');
+
+    document.getElementById('appsTab')
+        .classList.toggle('active', category === 'apps');
+
+    // Existing website sections ko category ke mutabiq dikhayein.
+    const gamesSection = document.getElementById('gamesSection');
+    const appsSection = document.getElementById('appsSection');
+
+    if (gamesSection && appsSection) {
+        gamesSection.hidden = category !== 'games';
+        appsSection.hidden = category !== 'apps';
+    }
+}
+</script>
+
 </body>
 </html>
