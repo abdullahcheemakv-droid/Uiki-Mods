@@ -392,5 +392,463 @@ function switchCategory(category) {
 }
 </script>
 
+    <!-- ===== UIKI GAME SECTION START ===== --><style>
+#uiki-game-system {
+    background: #111;
+    color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 760px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+#uiki-game-system * {
+    box-sizing: border-box;
+}
+
+#uiki-game-system .uiki-list-page,
+#uiki-game-system .uiki-detail-page {
+    padding: 20px;
+}
+
+#uiki-game-system .uiki-game-card {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 18px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #303030;
+}
+
+#uiki-game-system .uiki-list-icon {
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    border-radius: 20px;
+    flex-shrink: 0;
+    background: #252525;
+}
+
+#uiki-game-system .uiki-list-info {
+    flex: 1;
+    min-width: 0;
+}
+
+#uiki-game-system .uiki-list-name {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 10px;
+    overflow-wrap: anywhere;
+}
+
+#uiki-game-system .uiki-list-description {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #c8c8c8;
+    margin: 0 0 14px;
+    overflow-wrap: anywhere;
+}
+
+#uiki-game-system .uiki-list-stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 16px;
+    color: #e5e5e5;
+}
+
+#uiki-game-system .uiki-detail-page {
+    display: none;
+}
+
+#uiki-game-system .uiki-back {
+    border: 0;
+    background: transparent;
+    color: #f1f1f1;
+    font-size: 29px;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 35px;
+}
+
+#uiki-game-system .uiki-detail-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#uiki-game-system .uiki-detail-icon {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 23px;
+    background: #252525;
+    flex-shrink: 0;
+}
+
+#uiki-game-system .uiki-detail-info {
+    flex: 1;
+    min-width: 0;
+}
+
+#uiki-game-system .uiki-detail-name {
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 500;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+#uiki-game-system .uiki-detail-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 38px 0;
+    text-align: center;
+}
+
+#uiki-game-system .uiki-stat {
+    padding: 0 7px;
+    border-right: 1px solid #454545;
+    overflow-wrap: anywhere;
+}
+
+#uiki-game-system .uiki-stat:last-child {
+    border-right: 0;
+}
+
+#uiki-game-system .uiki-stat strong {
+    display: block;
+    font-size: 19px;
+    margin-bottom: 9px;
+}
+
+#uiki-game-system .uiki-stat span {
+    font-size: 13px;
+    color: #c6c6c6;
+}
+
+#uiki-game-system .uiki-install {
+    display: block;
+    width: 100%;
+    background: #a8c7fa;
+    color: #172b4d;
+    text-decoration: none;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 17px;
+    border-radius: 40px;
+    margin: 25px 0 32px;
+}
+
+#uiki-game-system .uiki-install:active {
+    opacity: 0.8;
+}
+
+#uiki-game-system .uiki-safety {
+    border: 1px solid #414141;
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-top: 28px;
+}
+
+#uiki-game-system .uiki-safety-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    margin: 24px 0;
+}
+
+#uiki-game-system .uiki-safety-row:last-child {
+    margin-bottom: 0;
+}
+
+#uiki-game-system .uiki-safety-icon {
+    width: 35px;
+    flex-shrink: 0;
+    font-size: 25px;
+}
+
+#uiki-game-system .uiki-safety-title {
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+#uiki-game-system .uiki-safety-description {
+    color: #c4c4c4;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 8px;
+}
+
+#uiki-game-system .uiki-screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    margin-top: 28px;
+    background: #222;
+}
+
+@media (max-width: 420px) {
+    #uiki-game-system .uiki-list-page,
+    #uiki-game-system .uiki-detail-page {
+        padding: 15px;
+    }
+
+    #uiki-game-system .uiki-game-card {
+        gap: 14px;
+    }
+
+    #uiki-game-system .uiki-list-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    #uiki-game-system .uiki-list-name {
+        font-size: 20px;
+    }
+
+    #uiki-game-system .uiki-list-description {
+        font-size: 14px;
+    }
+
+    #uiki-game-system .uiki-detail-icon {
+        width: 90px;
+        height: 90px;
+    }
+
+    #uiki-game-system .uiki-detail-name {
+        font-size: 23px;
+    }
+
+    #uiki-game-system .uiki-stat strong {
+        font-size: 15px;
+    }
+
+    #uiki-game-system .uiki-stat span {
+        font-size: 11px;
+    }
+
+    #uiki-game-system .uiki-safety-title {
+        font-size: 17px;
+    }
+}
+</style><div id="uiki-game-system"><!-- ===== FIRST PAGE: GAME LIST ===== -->
+
+<div class="uiki-list-page" id="uikiGameList">
+
+    <!-- CLICK THIS CARD TO OPEN THE DETAILS PAGE -->
+    <div class="uiki-game-card"
+         role="button"
+         tabindex="0"
+         onclick="uikiOpenGame()"
+         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();uikiOpenGame();}">
+
+        <!-- INSERT IMAGE PATH HERE -->
+        <img
+            class="uiki-list-icon"
+            src="INSERT IMAGE PATH"
+            alt="INSERT GAME NAME"
+        >
+
+        <div class="uiki-list-info">
+
+            <!-- INSERT GAME NAME HERE -->
+            <h2 class="uiki-list-name">INSERT GAME NAME</h2>
+
+            <!-- INSERT GAME DESCRIPTION HERE -->
+            <p class="uiki-list-description">
+                INSERT GAME DESCRIPTION
+            </p>
+
+            <div class="uiki-list-stats">
+
+                <!-- INSERT MB HERE -->
+                <span>INSERT MB</span>
+
+                <!-- INSERT DOWNLOADS HERE -->
+                <span>INSERT DOWNLOADS</span>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ===== SECOND PAGE: GAME DETAILS ===== -->
+
+<div class="uiki-detail-page" id="uikiGameDetails">
+
+    <button class="uiki-back"
+            type="button"
+            onclick="uikiBackToGames()"
+            aria-label="Go back">
+        ←
+    </button>
+
+    <div class="uiki-detail-header">
+
+        <!-- INSERT IMAGE PATH HERE -->
+        <img
+            class="uiki-detail-icon"
+            src="INSERT IMAGE PATH"
+            alt="INSERT GAME NAME"
+        >
+
+        <div class="uiki-detail-info">
+
+            <!-- INSERT GAME NAME HERE -->
+            <h1 class="uiki-detail-name">
+                INSERT GAME NAME
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME SIZE AND DOWNLOADS -->
+
+    <div class="uiki-detail-stats">
+
+        <div class="uiki-stat">
+            <strong>INSERT MB</strong>
+            <span>Download Size</span>
+        </div>
+
+        <div class="uiki-stat">
+            <strong>INSERT DOWNLOADS</strong>
+            <span>Downloads</span>
+        </div>
+
+        <div class="uiki-stat">
+            <strong>INSERT VERSION</strong>
+            <span>Version</span>
+        </div>
+
+    </div>
+
+
+    <!-- INSERT DOWNLOAD LINK ON INSTALL BUTTON -->
+
+    <a
+        class="uiki-install"
+        href="INSERT LINK ON INSTALL BUTTON"
+        target="_blank"
+        rel="noopener noreferrer">
+        Install
+    </a>
+
+
+    <!-- DATA SAFETY SECTION -->
+
+    <div class="uiki-safety">
+
+        <div class="uiki-safety-row">
+
+            <div class="uiki-safety-icon">♧</div>
+
+            <div>
+                <div class="uiki-safety-title">
+                    This app may share these data types with third parties
+                </div>
+
+                <div class="uiki-safety-description">
+                    INSERT DATA SHARING DETAILS
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="uiki-safety-row">
+
+            <div class="uiki-safety-icon">☁</div>
+
+            <div>
+                <div class="uiki-safety-title">
+                    This app may collect these data types
+                </div>
+
+                <div class="uiki-safety-description">
+                    INSERT DATA COLLECTION DETAILS
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="uiki-safety-row">
+
+            <div class="uiki-safety-icon">♙</div>
+
+            <div>
+                <div class="uiki-safety-title">
+                    Data is encrypted in transit
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="uiki-safety-row">
+
+            <div class="uiki-safety-icon">▤</div>
+
+            <div>
+                <div class="uiki-safety-title">
+                    Account deletion
+                </div>
+
+                <div class="uiki-safety-description">
+                    INSERT ACCOUNT DELETION DETAILS
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEE DETAILS LINK REMOVED -->
+        <!-- PLAY ON PC SECTION REMOVED -->
+
+    </div>
+
+
+    <!-- INSERT GAME SCREENSHOT IMAGE PATH HERE -->
+
+    <img
+        class="uiki-screenshot"
+        src="INSERT SCREENSHOT IMAGE PATH"
+        alt="INSERT GAME NAME Screenshot"
+    >
+
+</div>
+
+</div><script>
+function uikiOpenGame() {
+    document.getElementById("uikiGameList").style.display = "none";
+    document.getElementById("uikiGameDetails").style.display = "block";
+
+    document.getElementById("uiki-game-system").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function uikiBackToGames() {
+    document.getElementById("uikiGameDetails").style.display = "none";
+    document.getElementById("uikiGameList").style.display = "block";
+
+    document.getElementById("uiki-game-system").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script><!-- ===== UIKI GAME SECTION END ===== -->
 </body>
 </html>
