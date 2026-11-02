@@ -1056,4 +1056,320 @@ function login() {
     // This is not real password verification.
     // Use Firebase Authentication for real accounts.
 
-    localStorage.setItem("uikiLoggedIn", "tr
+    localStorage.setItem("uikiLoggedIn", "true");
+
+    enterWebsite(saved);
+}
+
+
+function showLogin() {
+
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+
+}
+
+
+function showSignup() {
+
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "block";
+
+}
+
+
+function enterWebsite(account) {
+
+    document.getElementById("authScreen").style.display = "none";
+
+    document.getElementById("mainWebsite").style.display = "block";
+
+    document.getElementById("profileName").textContent =
+        account.name;
+
+    document.getElementById("profileEmail").textContent =
+        account.email;
+
+}
+
+
+function logout() {
+
+    localStorage.removeItem("uikiLoggedIn");
+
+    location.reload();
+
+}
+
+
+/* =========================
+   CHECK LOGIN
+========================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    const loggedIn =
+        localStorage.getItem("uikiLoggedIn");
+
+    const account =
+        JSON.parse(localStorage.getItem("uikiAccount") || "null");
+
+    if (loggedIn === "true" && account) {
+        enterWebsite(account);
+    }
+
+});
+
+
+/* =========================
+   CATEGORY SWITCHING
+========================= */
+
+function showCategory(category) {
+
+    document.getElementById("gamesSection").style.display =
+        category === "games" ? "block" : "none";
+
+    document.getElementById("appsSection").style.display =
+        category === "apps" ? "block" : "none";
+
+    document.getElementById("gamesTab")
+        .classList.toggle("active", category === "games");
+
+    document.getElementById("appsTab")
+        .classList.toggle("active", category === "apps");
+
+    showPage("home");
+
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(page) {
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("detailPage").style.display = "none";
+
+    document.getElementById("profilePage").style.display = "none";
+
+    document.querySelectorAll(".bottom-nav button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    if (page === "home") {
+
+        document.getElementById("homePage").style.display = "block";
+
+        document.getElementById("homeNav").classList.add("active");
+
+    }
+
+    if (page === "games") {
+
+        document.getElementById("homePage").style.display = "block";
+
+        document.getElementById("gamesNav").classList.add("active");
+
+        showCategory("games");
+
+    }
+
+    if (page === "apps") {
+
+        document.getElementById("homePage").style.display = "block";
+
+        document.getElementById("appsNav").classList.add("active");
+
+        showCategory("apps");
+
+    }
+
+    if (page === "profile") {
+
+        document.getElementById("profilePage").style.display = "block";
+
+    }
+
+}
+
+
+/* =========================
+   GAME DATABASE
+========================= */
+
+const appData = {
+
+    subway: {
+
+        name: "Subway Surfers",
+
+        image: "images/Qd.png",
+
+        category: "Game",
+
+        size: "260 MB",
+
+        downloads: "1B+",
+
+        version: "3.70.3",
+
+        description:
+        "Explore Subway Surfers and enjoy the exciting gameplay. Add your own accurate game description here.",
+
+        download:
+        "https://www.mediafire.com/file/s9wsvw27lv1oc07/Subway_Surfers_VIP_Mod_Menu_v3.73.0_By_AxionModder.apk/file",
+
+        screenshot: "images/screenshot.png"
+
+    },
+
+
+    game2: {
+
+        name: "Insert Game Name",
+
+        image: "images/game2.png",
+
+        category: "Game",
+
+        size: "120 MB",
+
+        downloads: "100K+",
+
+        version: "1.0",
+
+        description: "Insert your game description here.",
+
+        download: "#",
+
+        screenshot: "images/screenshot2.png"
+
+    },
+
+
+    app1: {
+
+        name: "Insert App Name",
+
+        image: "images/app1.png",
+
+        category: "App",
+
+        size: "50 MB",
+
+        downloads: "10K+",
+
+        version: "1.0",
+
+        description: "Insert your app description here.",
+
+        download: "#",
+
+        screenshot: "images/app-screenshot.png"
+
+    }
+
+};
+
+
+/* =========================
+   OPEN DETAILS
+========================= */
+
+function openDetails(id) {
+
+    const app = appData[id];
+
+    if (!app) return;
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("profilePage").style.display = "none";
+
+    document.getElementById("detailPage").style.display = "block";
+
+    document.getElementById("detailImage").src = app.image;
+
+    document.getElementById("detailName").textContent = app.name;
+
+    document.getElementById("detailCategory").textContent =
+        app.category;
+
+    document.getElementById("detailSize").textContent = app.size;
+
+    document.getElementById("detailDownloads").textContent =
+        app.downloads;
+
+    document.getElementById("detailVersion").textContent =
+        app.version;
+
+    document.getElementById("detailDescription").textContent =
+        app.description;
+
+    document.getElementById("detailScreenshot").src =
+        app.screenshot;
+
+    document.getElementById("installButton").href =
+        app.download;
+
+    document.getElementById("installButton").style.pointerEvents =
+        app.download === "#" ? "none" : "auto";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+function backHome() {
+
+    document.getElementById("detailPage").style.display = "none";
+
+    document.getElementById("homePage").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   SEARCH SYSTEM
+========================= */
+
+function searchApps() {
+
+    const term =
+        document.getElementById("searchInput")
+        .value.toLowerCase().trim();
+
+    const cards =
+        document.querySelectorAll(".app-card");
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        card.style.display =
+            name.includes(term) ? "block" : "none";
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
