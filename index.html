@@ -1472,62 +1472,92 @@ async function recoverProfile(user){
 }
 
 
-/* AUTH STATE LISTENER - FIXED */
-
-onAuthStateChanged(auth, async user => {
-
-    const thisRun = ++authRunId;
-
-    currentUser = user;
-
-    // USER NOT LOGGED IN
-    if (!user) {
-
-        currentProfile = null;
-
-        $("authScreen").style.display = "flex";
-        $("mainWebsite").style.display = "none";
-
-        return;
-    }
-
-    // USER ALREADY LOGGED IN
-    $("authScreen").style.display = "none";
-    $("mainWebsite").style.display = "block";
-
-    // Show home page immediately
-    showPage("home");
-
-    // Load apps and profile without blocking homepage
-    try {
-
-        const profilePromise = recoverProfile(user);
-
-        const appsPromise = loadApps();
-
-        currentProfile = await profilePromise;
-
-        if (thisRun !== authRunId) return;
-
-        $("profileName").textContent =
-            currentProfile.name || user.displayName || "User";
-
-        $("profileUsername").textContent =
-            "@" + (currentProfile.username || "");
-
-        $("profileEmail").textContent =
-            user.email || "";
-
-        setAvatar(currentProfile.photoURL || "");
-
-        await appsPromise;
-
-    } catch (error) {
-
-        console.error("Account loading error:", error);
-
-    }
-
+/* AUTH STATE LISTENER */  
+  
+onAuthStateChanged(auth,async user=>{  
+  
+ const thisRun = ++authRunId;  
+  
+ currentUser = user;  
+  
+  
+ if(!user){  
+  
+  currentProfile = null;  
+  
+  $("authScreen").style.display = "flex";  
+  
+  $("mainWebsite").style.display = "none";  
+  
+  return;  
+  
+ }  
+  
+  
+ while(signupInProgress){  
+  
+  await new Promise(resolve=>setTimeout(resolve,100));  
+  
+  if(thisRun !== authRunId) return;  
+  
+ }  
+  
+  
+ try{  
+  
+  currentProfile = await recoverProfile(user);  
+  
+  
+  if(thisRun !== authRunId) return;  
+  
+  
+  $("authScreen").style.display = "none";  
+  
+  $("mainWebsite").style.display = "block";  
+  
+  
+  $("profileName").textContent =  
+  currentProfile.name || user.displayName || "User";  
+  
+  
+  $("profileUsername").textContent =  
+  "@"+(currentProfile.username || "");  
+  
+  
+  $("profileEmail").textContent =  
+  user.email || "";  
+  
+  
+  setAvatar(currentProfile.photoURL || "");  
+  
+  
+  await loadApps();  
+  
+  
+  if(thisRun === authRunId){  
+  
+   showPage("home");  
+  
+  }  
+  
+  
+ }catch(error){  
+  
+  console.error("Account loading error:",error);  
+  
+  
+  setError(  
+   "loginError",  
+   "Profile loading failed: "+friendlyError(error)  
+  );  
+  
+  
+  $("authScreen").style.display = "flex";  
+  
+  $("mainWebsite").style.display = "none";  
+  
+ }  
+  
 });
 /* LOAD PUBLIC UPLOADS */
 
