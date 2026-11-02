@@ -3,354 +3,1373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>UIKI MODS - App Store</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#090e1b;--card:#141d30;--blue:#4c9aff;--green:#00e69a;--text:#fff;--muted:#9caac1}
-body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif;padding-bottom:85px}
-button,input,textarea,select{font-family:inherit}button{cursor:pointer}
-.auth-screen{position:fixed;inset:0;z-index:99999;display:flex;justify-content:center;align-items:center;padding:20px;background:radial-gradient(circle at top left,#123c66,transparent 45%),radial-gradient(circle at bottom right,#153e39,transparent 45%),#080d19}
-.auth-box{width:100%;max-width:410px;background:rgba(20,29,48,.97);border:1px solid #34445d;padding:30px 25px;border-radius:25px;text-align:center;box-shadow:0 20px 70px #0008;max-height:95vh;overflow:auto}
-.auth-logo{width:75px;height:75px;object-fit:contain;margin-bottom:12px}
-.auth-brand{font-size:32px;font-weight:900;background:linear-gradient(90deg,#00e69a,#4c9aff,#b58aff);background-clip:text;-webkit-background-clip:text;color:transparent}
-.auth-subtitle{color:var(--muted);margin:12px 0 22px;line-height:1.6}
-.auth-box input,.form-control{width:100%;padding:14px;margin-bottom:12px;border-radius:12px;border:1px solid #34445d;background:#0d1729;color:white;outline:none;font-size:15px}
-.primary-btn{width:100%;padding:15px;background:linear-gradient(90deg,#087bdf,#4c9aff);color:white;font-weight:bold;font-size:16px;border:0;border-radius:12px;margin-top:8px}
-.auth-switch{margin-top:20px;color:var(--muted);font-size:14px}.auth-switch span{color:#54a7ff;font-weight:bold;cursor:pointer}
-.auth-error{color:#ff7777;font-size:13px;margin:10px 0;white-space:pre-wrap}
-#mainWebsite{display:none}
-.header{padding:18px;background:#101a2d;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:1000;border-bottom:1px solid #263750}
-.logo{width:48px;height:48px;object-fit:contain}.brand{flex:1}.brand h1{font-size:23px;font-weight:900;background:linear-gradient(90deg,#00e69a,#4c9aff);background-clip:text;-webkit-background-clip:text;color:transparent}.brand p{color:#a8b8cc;font-size:11px;margin-top:4px}
-.profile-btn{width:42px;height:42px;border-radius:50%;border:1px solid #526780;background:#20334e;color:white;font-size:19px;overflow:hidden}.profile-btn img{width:100%;height:100%;object-fit:cover}
-.search-container{padding:17px}.search-box{display:flex;align-items:center;background:#19263c;border:1px solid #34445d;padding:0 15px;border-radius:30px}.search-box span{font-size:20px;color:#91a6c1}.search-box input{width:100%;padding:15px 12px;background:transparent;border:0;outline:0;color:white;font-size:15px}.search-box input::placeholder{color:#8796ad}
-.hero{margin:5px 17px 25px;padding:27px 22px;border-radius:22px;background:radial-gradient(circle at top right,#2865a8,transparent 60%),linear-gradient(130deg,#142f52,#111c31);border:1px solid #315276;overflow:hidden}.hero small{color:#70eec0;font-weight:bold;letter-spacing:2px}.hero h2{font-size:28px;line-height:1.3;margin:15px 0 10px}.hero p{color:#bdcde0;line-height:1.6;font-size:14px}.hero button{margin-top:20px;padding:12px 20px;background:#fff;color:#14243b;border:0;border-radius:25px;font-weight:bold}
-.section{padding:0 17px;margin-bottom:30px}.section-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.section-heading h2{font-size:21px}.section-heading span{color:#65aaff;font-size:13px}
-.category-tabs{display:flex;gap:12px;padding:0 17px;margin-bottom:22px}.category-tabs button{padding:11px 25px;border-radius:25px;background:#19263c;border:1px solid #34445d;color:#cbd5e1;font-size:14px;font-weight:bold}.category-tabs button.active{background:#176ac0;color:white;border-color:#4c9aff}
-.app-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.app-card{background:var(--card);border:1px solid #263750;border-radius:17px;padding:13px;cursor:pointer;min-width:0;transition:.2s}.app-card:active{transform:scale(.97)}.app-card img{width:75px;height:75px;border-radius:17px;object-fit:cover;background:#263750;margin-bottom:12px}.app-card h3{font-size:15px;margin-bottom:7px;overflow-wrap:anywhere}.app-card p{color:var(--muted);font-size:12px;line-height:1.5}.app-meta{display:flex;justify-content:space-between;gap:5px;margin-top:13px;color:#83b8ff;font-size:11px}
-#detailPage,#profilePage,#uploadPage{display:none;padding:20px}.back-btn{background:transparent;border:0;color:white;font-size:28px;margin-bottom:25px}.detail-header{display:flex;gap:18px;align-items:center}.detail-header img{width:110px;height:110px;object-fit:cover;border-radius:23px;background:#263750}.detail-header h1{font-size:23px;margin-bottom:10px}.detail-header p{color:var(--muted);font-size:13px}
-.detail-stats{display:grid;grid-template-columns:repeat(3,1fr);background:#152238;padding:20px 5px;border-radius:17px;margin:30px 0;text-align:center}.detail-stats strong{display:block;font-size:17px;margin-bottom:8px}.detail-stats span{color:#9bacc2;font-size:11px}
-.install-btn{display:block;width:100%;padding:16px;background:linear-gradient(90deg,#087bdf,#4c9aff);color:white;text-align:center;text-decoration:none;font-weight:bold;font-size:18px;border-radius:30px;margin-bottom:30px;border:0}.detail-description{color:#b5c3d6;line-height:1.8;margin:20px 0;font-size:14px}.screenshot-title{font-size:19px;margin:25px 0 15px}.screenshot{width:100%;border-radius:15px;margin-bottom:15px}
-.profile-card{ text-align:center;background:var(--card);padding:25px 20px;border-radius:20px;margin-bottom:22px}.profile-avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;background:#263750;margin-bottom:15px}.profile-card h2{margin-bottom:8px}.profile-card p{color:var(--muted);margin-bottom:15px;overflow-wrap:anywhere}.logout-btn,.secondary-btn{background:#9e303b;color:white;border:0;padding:13px 25px;border-radius:12px;font-weight:bold}.secondary-btn{background:#294563;margin:5px}
-.form-panel{background:var(--card);border:1px solid #263750;border-radius:18px;padding:18px;margin-bottom:22px}.form-panel h2{margin-bottom:15px}.form-panel label{display:block;color:#b8c8dc;font-size:13px;margin:9px 0 6px}.form-control{display:block;margin-bottom:10px}.form-panel textarea{min-height:95px;resize:vertical}.form-panel select option{background:#142033}.file-note{color:var(--muted);font-size:12px;margin:5px 0 12px}.notice{padding:12px;border-radius:12px;background:#172d43;color:#bcd5ef;font-size:13px;line-height:1.5;margin:12px 0}
-.bottom-nav{position:fixed;bottom:0;left:0;width:100%;height:75px;background:#111c30;border-top:1px solid #293a54;display:flex;justify-content:space-around;align-items:center;z-index:5000}.bottom-nav button{background:transparent;border:0;color:#92a5bf;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:12px;width:25%}.bottom-nav button span:first-child{font-size:22px}.bottom-nav button.active{color:#61aaff}.bottom-nav button.active span:first-child{background:#174e80;border-radius:25px;padding:4px 22px}
-@media(max-width:360px){.app-grid{grid-template-columns:1fr}.hero h2{font-size:23px}}
+
+/* =========================
+   GLOBAL SETTINGS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #090e1b;
+    --card: #141d30;
+    --card2: #1b2740;
+    --blue: #4c9aff;
+    --green: #00e69a;
+    --text: #ffffff;
+    --muted: #9caac1;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    padding-bottom: 85px;
+}
+
+button, input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================
+   SIGN UP / LOGIN SCREEN
+========================= */
+
+.auth-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background:
+    radial-gradient(circle at top left, #123c66, transparent 45%),
+    radial-gradient(circle at bottom right, #153e39, transparent 45%),
+    #080d19;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 410px;
+    background: rgba(20,29,48,0.95);
+    border: 1px solid #34445d;
+    padding: 35px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 70px #0008;
+}
+
+.auth-logo {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.auth-brand {
+    font-size: 32px;
+    font-weight: 900;
+    background: linear-gradient(90deg,#00e69a,#4c9aff,#b58aff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.auth-subtitle {
+    color: var(--muted);
+    margin: 12px 0 28px;
+    line-height: 1.6;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 13px;
+    border-radius: 12px;
+    border: 1px solid #34445d;
+    background: #0d1729;
+    color: white;
+    outline: none;
+    font-size: 15px;
+}
+
+.auth-box input:focus {
+    border-color: var(--blue);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg,#087bdf,#4c9aff);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.auth-switch {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.auth-switch span {
+    color: #54a7ff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-error {
+    color: #ff7777;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+/* =========================
+   MAIN WEBSITE
+========================= */
+
+#mainWebsite {
+    display: none;
+}
+
+.header {
+    padding: 18px;
+    background: #101a2d;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #263750;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.brand {
+    flex: 1;
+}
+
+.brand h1 {
+    font-size: 23px;
+    font-weight: 900;
+    background: linear-gradient(90deg,#00e69a,#4c9aff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.brand p {
+    color: #a8b8cc;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.profile-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid #526780;
+    background: #20334e;
+    color: white;
+    font-size: 19px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+    padding: 17px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #19263c;
+    border: 1px solid #34445d;
+    padding: 0 15px;
+    border-radius: 30px;
+}
+
+.search-box span {
+    font-size: 20px;
+    color: #91a6c1;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 12px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+}
+
+.search-box input::placeholder {
+    color: #8796ad;
+}
+
+/* =========================
+   WELCOME BANNER
+========================= */
+
+.hero {
+    margin: 5px 17px 25px;
+    padding: 27px 22px;
+    border-radius: 22px;
+    background:
+    radial-gradient(circle at top right,#2865a8,transparent 60%),
+    linear-gradient(130deg,#142f52,#111c31);
+    border: 1px solid #315276;
+    overflow: hidden;
+}
+
+.hero small {
+    color: #70eec0;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 15px 0 10px;
+}
+
+.hero p {
+    color: #bdcde0;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.hero button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #ffffff;
+    color: #14243b;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.section {
+    padding: 0 17px;
+    margin-bottom: 30px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 17px;
+}
+
+.section-heading h2 {
+    font-size: 21px;
+}
+
+.section-heading span {
+    color: #65aaff;
+    font-size: 13px;
+}
+
+/* =========================
+   CATEGORY TABS
+========================= */
+
+.category-tabs {
+    display: flex;
+    gap: 12px;
+    padding: 0 17px;
+    margin-bottom: 22px;
+}
+
+.category-tabs button {
+    padding: 11px 25px;
+    border-radius: 25px;
+    background: #19263c;
+    border: 1px solid #34445d;
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.category-tabs button.active {
+    background: #176ac0;
+    color: white;
+    border-color: #4c9aff;
+}
+
+/* =========================
+   APP / GAME CARDS
+========================= */
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 13px;
+}
+
+.app-card {
+    background: var(--card);
+    border: 1px solid #263750;
+    border-radius: 17px;
+    padding: 13px;
+    cursor: pointer;
+    transition: 0.25s;
+    min-width: 0;
+}
+
+.app-card:active {
+    transform: scale(0.96);
+}
+
+.app-card img {
+    width: 75px;
+    height: 75px;
+    border-radius: 17px;
+    object-fit: cover;
+    background: #263750;
+    margin-bottom: 12px;
+}
+
+.app-card h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+    overflow-wrap: anywhere;
+}
+
+.app-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.app-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 13px;
+    color: #83b8ff;
+    font-size: 11px;
+}
+
+/* =========================
+   DETAIL PAGE
+========================= */
+
+#detailPage {
+    display: none;
+    padding: 20px;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.detail-header {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.detail-header img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 23px;
+    background: #263750;
+}
+
+.detail-header h1 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.detail-header p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.detail-stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    background: #152238;
+    padding: 20px 5px;
+    border-radius: 17px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.detail-stats strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.detail-stats span {
+    color: #9bacc2;
+    font-size: 11px;
+}
+
+.install-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg,#087bdf,#4c9aff);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.detail-description {
+    color: #b5c3d6;
+    line-height: 1.8;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.screenshot-title {
+    font-size: 19px;
+    margin: 25px 0 15px;
+}
+
+.screenshot {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   PROFILE PAGE
+========================= */
+
+#profilePage {
+    display: none;
+    padding: 25px 18px;
+}
+
+.profile-card {
+    text-align: center;
+    background: var(--card);
+    padding: 30px 20px;
+    border-radius: 20px;
+}
+
+.profile-avatar {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.profile-card h2 {
+    margin-bottom: 10px;
+}
+
+.profile-card p {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    background: #9e303b;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: #111c30;
+    border-top: 1px solid #293a54;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 5000;
+}
+
+.bottom-nav button {
+    background: transparent;
+    border: none;
+    color: #92a5bf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    width: 33.33%;
+}
+
+.bottom-nav button span:first-child {
+    font-size: 22px;
+}
+
+.bottom-nav button.active {
+    color: #61aaff;
+}
+
+.bottom-nav button.active span:first-child {
+    background: #174e80;
+    border-radius: 25px;
+    padding: 4px 22px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:360px) {
+    .app-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+}
+
 </style>
 </head>
+
 <body>
+
+<!-- =========================
+     SIGN UP SCREEN
+========================= -->
+
 <div class="auth-screen" id="authScreen">
- <div class="auth-box">
-  <img class="auth-logo" src="images/Jagur.png" alt="UIKI Logo">
-  <h1 class="auth-brand">UIKI MODS</h1>
-  <p class="auth-subtitle">Discover amazing games and apps. Download and enjoy!</p>
-  <div id="signupForm">
-   <input id="signupName" type="text" placeholder="Your Name" maxlength="40">
-   <input id="signupUsername" type="text" placeholder="Unique username (e.g. uiki123)" maxlength="20">
-   <input id="signupEmail" type="email" placeholder="Email Address">
-   <input id="signupPassword" type="password" placeholder="Create Password (8+ characters)">
-   <button class="primary-btn" id="signupBtn" onclick="signup()">Create Account</button>
-   <p class="auth-error" id="signupError"></p>
-   <div class="auth-switch">Already have an account? <span onclick="showLogin()">Login</span></div>
-  </div>
-  <div id="loginForm" style="display:none">
-   <input id="loginEmail" type="email" placeholder="Email Address">
-   <input id="loginPassword" type="password" placeholder="Password">
-   <button class="primary-btn" id="loginBtn" onclick="login()">Login</button>
-   <p class="auth-error" id="loginError"></p>
-   <div class="auth-switch">New user? <span onclick="showSignup()">Sign Up</span></div>
-  </div>
- </div>
+
+    <div class="auth-box">
+
+        <!-- INSERT YOUR LOGO IMAGE PATH -->
+        <img class="auth-logo"
+             src="images/Jagur.png"
+             alt="UIKI Logo">
+
+        <h1 class="auth-brand">UIKI MODS</h1>
+
+        <p class="auth-subtitle">
+            Discover amazing games and apps.
+            Download and enjoy!
+        </p>
+
+        <div id="signupForm">
+
+            <input id="signupName"
+                   type="text"
+                   placeholder="Your Name">
+
+            <input id="signupEmail"
+                   type="email"
+                   placeholder="Email Address">
+
+            <input id="signupPassword"
+                   type="password"
+                   placeholder="Create Password">
+
+            <button class="primary-btn"
+                    onclick="signup()">
+                Create Account
+            </button>
+
+            <p class="auth-error" id="signupError"></p>
+
+            <div class="auth-switch">
+                Already have an account?
+                <span onclick="showLogin()">Login</span>
+            </div>
+
+        </div>
+
+        <div id="loginForm" style="display:none">
+
+            <input id="loginEmail"
+                   type="email"
+                   placeholder="Email Address">
+
+            <input id="loginPassword"
+                   type="password"
+                   placeholder="Password">
+
+            <button class="primary-btn"
+                    onclick="login()">
+                Login
+            </button>
+
+            <p class="auth-error" id="loginError"></p>
+
+            <div class="auth-switch">
+                New user?
+                <span onclick="showSignup()">Sign Up</span>
+            </div>
+
+        </div>
+
+    </div>
 </div>
+
+
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
 
 <div id="mainWebsite">
- <header class="header">
-  <img class="logo" src="images/Jagur.png" alt="Logo">
-  <div class="brand"><h1>UIKI MODS</h1><p>DOWNLOAD AND ENJOY</p></div>
-  <button class="profile-btn" onclick="showPage('profile')" id="headerAvatar">☻</button>
- </header>
- <div class="search-container"><div class="search-box"><span>⌕</span><input type="search" id="searchInput" placeholder="Search games and apps..." oninput="renderApps()"></div></div>
- <main id="homePage">
-  <div class="hero"><small>WELCOME TO UIKI MODS</small><h2>Your Favourite<br>Games & Apps</h2><p>Explore amazing applications and discover something new.</p><button onclick="showCategory('games')">Explore Games →</button></div>
-  <div class="category-tabs"><button class="active" id="gamesTab" onclick="showCategory('games')">🎮 Games</button><button id="appsTab" onclick="showCategory('apps')">▦ Apps</button></div>
-  <section class="section" id="gamesSection"><div class="section-heading"><h2>Popular Games</h2><span>Explore all →</span></div><div class="app-grid" id="gamesGrid"></div></section>
-  <section class="section" id="appsSection" style="display:none"><div class="section-heading"><h2>Popular Apps</h2><span>Explore all →</span></div><div class="app-grid" id="appsGrid"></div></section>
- </main>
- <section id="detailPage">
-  <button class="back-btn" onclick="backHome()">←</button>
-  <div class="detail-header"><img id="detailImage" src="" alt="App Icon"><div><h1 id="detailName">Item</h1><p id="detailCategory"></p><p id="detailOwner"></p></div></div>
-  <div class="detail-stats"><div><strong id="detailSize">—</strong><span>Download Size</span></div><div><strong id="detailDownloads">0</strong><span>Button Clicks</span></div><div><strong id="detailVersion">—</strong><span>Version</span></div></div>
-  <a href="#" target="_blank" rel="noopener noreferrer" class="install-btn" id="installButton">Install</a>
-  <h2>About this app</h2><p class="detail-description" id="detailDescription"></p>
-  <h2 class="screenshot-title">Screenshot</h2><img class="screenshot" id="detailScreenshot" src="" alt="Screenshot" onerror="this.style.display='none'">
- </section>
- <section id="profilePage">
-  <div class="profile-card">
-   <img class="profile-avatar" id="profileAvatar" src="" alt="Profile picture">
-   <h2 id="profileName">User</h2><p id="profileUsername"></p><p id="profileEmail"></p>
-   <label class="secondary-btn" for="avatarInput">Change profile picture</label>
-   <input id="avatarInput" type="file" accept="image/png,image/jpeg,image/webp" hidden onchange="changeAvatar(event)">
-   <br><button class="logout-btn" onclick="logout()">Logout</button>
-  </div>
-  <section class="section"><div class="section-heading"><h2>My Uploads</h2></div><div class="app-grid" id="myUploadsGrid"></div></section>
- </section>
- <section id="uploadPage">
-  <button class="back-btn" onclick="showPage('home')">←</button>
-  <div class="form-panel">
-   <h2>Upload Game / App</h2>
-   <div class="notice">Your upload will become public after submission. Only upload content you have permission to share. Images: JPG, PNG or WEBP, maximum 5 MB.</div>
-   <form id="uploadForm">
-    <label>Title</label><input class="form-control" id="itemTitle" maxlength="70" required placeholder="Game or app name">
-    <label>Category</label><select class="form-control" id="itemCategory" required><option value="Game">Game</option><option value="App">App</option></select>
-    <label>Description</label><textarea class="form-control" id="itemDescription" maxlength="2000" required placeholder="Write a description"></textarea>
-    <label>Size (e.g. 120 MB)</label><input class="form-control" id="itemSize" maxlength="30" required placeholder="120 MB">
-    <label>Version</label><input class="form-control" id="itemVersion" maxlength="30" required placeholder="1.0">
-    <label>Download URL (https://)</label><input class="form-control" id="itemDownload" type="url" required placeholder="https://example.com/download">
-    <label>App / Game image</label><input class="form-control" id="itemImage" type="file" accept="image/png,image/jpeg,image/webp" required>
-    <label>Screenshot (optional)</label><input class="form-control" id="itemScreenshot" type="file" accept="image/png,image/jpeg,image/webp">
-    <button class="primary-btn" id="uploadBtn" type="submit">Publish</button>
-    <p class="auth-error" id="uploadError"></p>
-   </form>
-  </div>
- </section>
- <nav class="bottom-nav">
-  <button class="active" id="homeNav" onclick="showPage('home')"><span>⌂</span><span>Home</span></button>
-  <button id="gamesNav" onclick="showPage('games')"><span>🎮</span><span>Games</span></button>
-  <button id="appsNav" onclick="showPage('apps')"><span>▦</span><span>Apps</span></button>
-  <button id="uploadNav" onclick="showPage('upload')"><span>＋</span><span>Upload</span></button>
- </nav>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <!-- INSERT LOGO IMAGE PATH -->
+        <img class="logo"
+             src="images/Jagur.png"
+             alt="Logo">
+
+        <div class="brand">
+            <h1>UIKI MODS</h1>
+            <p>DOWNLOAD AND ENJOY</p>
+        </div>
+
+        <button class="profile-btn"
+                onclick="showPage('profile')">
+            ☻
+        </button>
+
+    </header>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-container">
+
+        <div class="search-box">
+
+            <span>⌕</span>
+
+            <input type="search"
+                   id="searchInput"
+                   placeholder="Search games and apps..."
+                   oninput="searchApps()">
+
+        </div>
+
+    </div>
+
+
+    <!-- HOME PAGE -->
+
+    <main id="homePage">
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <small>WELCOME TO UIKI MODS</small>
+
+            <h2>
+                Your Favourite<br>
+                Games & Apps
+            </h2>
+
+            <p>
+                Explore amazing applications
+                and discover something new.
+            </p>
+
+            <button onclick="showCategory('games')">
+                Explore Games →
+            </button>
+
+        </div>
+
+
+        <!-- CATEGORY TABS -->
+
+        <div class="category-tabs">
+
+            <button class="active"
+                    id="gamesTab"
+                    onclick="showCategory('games')">
+                🎮 Games
+            </button>
+
+            <button id="appsTab"
+                    onclick="showCategory('apps')">
+                ▦ Apps
+            </button>
+
+        </div>
+
+
+        <!-- GAMES -->
+
+        <section class="section" id="gamesSection">
+
+            <div class="section-heading">
+                <h2>Popular Games</h2>
+                <span>Explore all →</span>
+            </div>
+
+            <div class="app-grid">
+
+                <!-- GAME CARD -->
+
+                <div class="app-card"
+                     data-name="Subway Surfers"
+                     onclick="openDetails('subway')">
+
+                    <!-- INSERT GAME IMAGE PATH -->
+                    <img src="images/Qd.png"
+                         alt="Subway Surfers">
+
+                    <h3>Subway Surfers</h3>
+
+                    <p>Subway Surfers Mod Menu</p>
+
+                    <div class="app-meta">
+                        <span>260 MB</span>
+                        <span>Game</span>
+                    </div>
+
+                </div>
+
+
+                <!-- ADD MORE GAMES HERE -->
+
+                <div class="app-card"
+                     data-name="Insert Game Name"
+                     onclick="openDetails('game2')">
+
+                    <!-- INSERT IMAGE PATH -->
+                    <img src="images/game2.png"
+                         alt="Game">
+
+                    <h3>Insert Game Name</h3>
+
+                    <p>Insert game description here.</p>
+
+                    <div class="app-meta">
+                        <span>120 MB</span>
+                        <span>Game</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPS -->
+
+        <section class="section"
+                 id="appsSection"
+                 style="display:none">
+
+            <div class="section-heading">
+                <h2>Popular Apps</h2>
+                <span>Explore all →</span>
+            </div>
+
+            <div class="app-grid">
+
+                <!-- ADD YOUR APPS HERE -->
+
+                <div class="app-card"
+                     data-name="Insert App Name"
+                     onclick="openDetails('app1')">
+
+                    <!-- INSERT APP IMAGE PATH -->
+                    <img src="images/app1.png"
+                         alt="App">
+
+                    <h3>Insert App Name</h3>
+
+                    <p>Insert app description here.</p>
+
+                    <div class="app-meta">
+                        <span>50 MB</span>
+                        <span>App</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- DETAIL PAGE -->
+
+    <section id="detailPage">
+
+        <button class="back-btn"
+                onclick="backHome()">
+            ←
+        </button>
+
+        <div class="detail-header">
+
+            <img id="detailImage"
+                 src=""
+                 alt="App Icon">
+
+            <div>
+                <h1 id="detailName">Game Name</h1>
+                <p id="detailCategory">Game</p>
+            </div>
+
+        </div>
+
+
+        <div class="detail-stats">
+
+            <div>
+                <strong id="detailSize">260 MB</strong>
+                <span>Download Size</span>
+            </div>
+
+            <div>
+                <strong id="detailDownloads">1M+</strong>
+                <span>Downloads</span>
+            </div>
+
+            <div>
+                <strong id="detailVersion">1.0</strong>
+                <span>Version</span>
+            </div>
+
+        </div>
+
+
+        <a href="#"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="install-btn"
+           id="installButton">
+            Install
+        </a>
+
+
+        <h2>About this app</h2>
+
+        <p class="detail-description"
+           id="detailDescription">
+            Game description.
+        </p>
+
+
+        <h2 class="screenshot-title">
+            Screenshots
+        </h2>
+
+        <!-- INSERT SCREENSHOT IMAGE PATH -->
+
+        <img class="screenshot"
+             id="detailScreenshot"
+             src="images/screenshot.png"
+             alt="Game Screenshot">
+
+    </section>
+
+
+    <!-- PROFILE PAGE -->
+
+    <section id="profilePage">
+
+        <div class="profile-card">
+
+            <div class="profile-avatar">👤</div>
+
+            <h2 id="profileName">User</h2>
+
+            <p id="profileEmail">Email</p>
+
+            <button class="logout-btn"
+                    onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <nav class="bottom-nav">
+
+        <button class="active"
+                id="homeNav"
+                onclick="showPage('home')">
+
+            <span>⌂</span>
+            <span>Home</span>
+
+        </button>
+
+        <button id="gamesNav"
+                onclick="showPage('games')">
+
+            <span>🎮</span>
+            <span>Games</span>
+
+        </button>
+
+        <button id="appsNav"
+                onclick="showPage('apps')">
+
+            <span>▦</span>
+            <span>Apps</span>
+
+        </button>
+
+    </nav>
+
 </div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, addDoc, collection, getDocs, query, where, serverTimestamp, runTransaction, increment } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-/* Firebase configuration */
-const firebaseConfig = {
- apiKey: "AIzaSyDAn31s6X9nrSYLpR_l7sCngnbK_NF2zqU",
- authDomain: "uiki-mods.firebaseapp.com",
- projectId: "uiki-mods",
- storageBucket: "uiki-mods.firebasestorage.app",
- messagingSenderId: "44689069234",
- appId: "1:44689069234:web:955ca2e778c10b6cdca5ab"
-};
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
-/* Supabase public project details */
-const SUPABASE_URL = "https://lcurseyadykbgqorqiwi.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Zv08l9LeI-5UqHoHybFd6Q_4p6UDr5G";
-const UPLOAD_FUNCTION_URL = SUPABASE_URL + "/functions/v1/upload-image";
+<script>
 
-const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
+/* =========================
+   DEMO ACCOUNT SYSTEM
+========================= */
 
-let currentUser = null;
-let currentProfile = null;
-let allApps = [];
-let activeCategory = "Game";
-let currentItem = null;
+function signup() {
 
-const $ = id => document.getElementById(id);
-const setError = (id, message) => { $(id).textContent = message || ""; };
-const safeText = value => String(value ?? "");
-const fallbackApps = [
- {id:"sample-subway",title:"Subway Surfers",description:"Explore Subway Surfers and enjoy exciting gameplay.",category:"Game",size:"260 MB",version:"3.70.3",imageUrl:"images/Qd.png",screenshotUrl:"images/screenshot.png",downloadUrl:"https://www.subwaysurfers.com/",downloadCount:0,ownerName:"UIKI MODS",ownerUsername:"official",uid:"official"},
- {id:"sample-game2",title:"Insert Game Name",description:"Insert your game description here.",category:"Game",size:"120 MB",version:"1.0",imageUrl:"images/game2.png",screenshotUrl:"",downloadUrl:"#",downloadCount:0,ownerName:"UIKI MODS",ownerUsername:"official",uid:"official"},
- {id:"sample-app1",title:"Insert App Name",description:"Insert your app description here.",category:"App",size:"50 MB",version:"1.0",imageUrl:"images/app1.png",screenshotUrl:"",downloadUrl:"#",downloadCount:0,ownerName:"UIKI MODS",ownerUsername:"official",uid:"official"}
-];
+    const name =
+        document.getElementById("signupName").value.trim();
 
-window.showLogin = () => { $("signupForm").style.display="none"; $("loginForm").style.display="block"; };
-window.showSignup = () => { $("loginForm").style.display="none"; $("signupForm").style.display="block"; };
+    const email =
+        document.getElementById("signupEmail").value.trim();
 
-window.signup = async () => {
- const name=$("signupName").value.trim(), username=$("signupUsername").value.trim().toLowerCase(), email=$("signupEmail").value.trim(), password=$("signupPassword").value;
- setError("signupError","");
- if(!name||!username||!email||!password){setError("signupError","Please fill all fields.");return;}
- if(!/^[a-z0-9_]{3,20}$/.test(username)){setError("signupError","Username must be 3–20 characters: letters, numbers or underscore.");return;}
- if(password.length<8){setError("signupError","Password must be at least 8 characters.");return;}
- $("signupBtn").disabled=true;
- try{
-  const usernameRef=doc(db,"usernames",username);
-  const existing=await getDoc(usernameRef);
-  if(existing.exists()){setError("signupError","This username is already taken.");return;}
-  const credential=await createUserWithEmailAndPassword(auth,email,password);
-  await updateProfile(credential.user,{displayName:name});
-  await runTransaction(db,async tx=>{
-   const check=await tx.get(usernameRef);
-   if(check.exists()) throw new Error("USERNAME_TAKEN");
-   tx.set(usernameRef,{uid:credential.user.uid});
-   tx.set(doc(db,"users",credential.user.uid),{uid:credential.user.uid,name,username,email,photoURL:"",createdAt:serverTimestamp()});
-  });
- }catch(e){setError("signupError",e.message==="USERNAME_TAKEN"?"Username already taken.":friendlyError(e));}
- finally{$("signupBtn").disabled=false;}
-};
+    const password =
+        document.getElementById("signupPassword").value;
 
-window.login = async () => {
- setError("loginError","");
- const email=$("loginEmail").value.trim(),password=$("loginPassword").value;
- if(!email||!password){setError("loginError","Enter email and password.");return;}
- $("loginBtn").disabled=true;
- try{await signInWithEmailAndPassword(auth,email,password);}
- catch(e){setError("loginError",friendlyError(e));}
- finally{$("loginBtn").disabled=false;}
-};
+    const error =
+        document.getElementById("signupError");
 
-function friendlyError(e){
- const code=e?.code||"";
- if(code.includes("email-already-in-use"))return "This email already has an account. Please login.";
- if(code.includes("invalid-email"))return "Please enter a valid email address.";
- if(code.includes("weak-password"))return "Choose a stronger password (at least 8 characters).";
- if(code.includes("user-not-found")||code.includes("wrong-password")||code.includes("invalid-credential"))return "Email or password is incorrect.";
- if(code.includes("network-request-failed"))return "Network error. Check your internet connection.";
- return e?.message||"Something went wrong. Please try again.";
+    error.textContent = "";
+
+    if (!name || !email || !password) {
+        error.textContent = "Please fill all fields.";
+        return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        error.textContent = "Enter a valid email address.";
+        return;
+    }
+
+    if (password.length < 8) {
+        error.textContent = "Password must be at least 8 characters.";
+        return;
+    }
+
+    const account = {
+        name: name,
+        email: email
+    };
+
+    localStorage.setItem(
+        "uikiAccount",
+        JSON.stringify(account)
+    );
+
+    // Demo session only; no password is stored.
+    localStorage.setItem("uikiLoggedIn", "true");
+
+    enterWebsite(account);
 }
 
-onAuthStateChanged(auth,async user=>{
- currentUser=user;
- if(!user){currentProfile=null;$("authScreen").style.display="flex";$("mainWebsite").style.display="none";return;}
- try{
-  const snap=await getDoc(doc(db,"users",user.uid));
-  if(!snap.exists()){setError("loginError","Your profile record was not found. Please contact the site owner.");await signOut(auth);return;}
-  currentProfile=snap.data();
-  $("authScreen").style.display="none";$("mainWebsite").style.display="block";
-  $("profileName").textContent=currentProfile.name||user.displayName||"User";
-  $("profileUsername").textContent="@"+(currentProfile.username||"");
-  $("profileEmail").textContent=user.email||"";
-  setAvatar(currentProfile.photoURL||"");
-  await loadApps();
-  showPage("home");
- }catch(e){alert("Could not load your account: "+friendlyError(e));}
+
+function login() {
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const error =
+        document.getElementById("loginError");
+
+    error.textContent = "";
+
+    const saved =
+        JSON.parse(localStorage.getItem("uikiAccount") || "null");
+
+    if (!saved || email !== saved.email || password.length < 8) {
+        error.textContent =
+            "Demo login failed. Create a new account or use your registered email.";
+        return;
+    }
+
+    // This is not real password verification.
+    // Use Firebase Authentication for real accounts.
+
+    localStorage.setItem("uikiLoggedIn", "true");
+
+    enterWebsite(saved);
+}
+
+
+function showLogin() {
+
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+
+}
+
+
+function showSignup() {
+
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "block";
+
+}
+
+
+function enterWebsite(account) {
+
+    document.getElementById("authScreen").style.display = "none";
+
+    document.getElementById("mainWebsite").style.display = "block";
+
+    document.getElementById("profileName").textContent =
+        account.name;
+
+    document.getElementById("profileEmail").textContent =
+        account.email;
+
+}
+
+
+function logout() {
+
+    localStorage.removeItem("uikiLoggedIn");
+
+    location.reload();
+
+}
+
+
+/* =========================
+   CHECK LOGIN
+========================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    const loggedIn =
+        localStorage.getItem("uikiLoggedIn");
+
+    const account =
+        JSON.parse(localStorage.getItem("uikiAccount") || "null");
+
+    if (loggedIn === "true" && account) {
+        enterWebsite(account);
+    }
+
 });
 
-function setAvatar(url){
- $("profileAvatar").src=url||"data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="#263750"/><text x="50%" y="58%" text-anchor="middle" font-size="48" fill="white">👤</text></svg>');
- $("headerAvatar").innerHTML=url?'<img src="'+url+'" alt="Profile">':"☻";
+
+/* =========================
+   CATEGORY SWITCHING
+========================= */
+
+function showCategory(category) {
+
+    document.getElementById("gamesSection").style.display =
+        category === "games" ? "block" : "none";
+
+    document.getElementById("appsSection").style.display =
+        category === "apps" ? "block" : "none";
+
+    document.getElementById("gamesTab")
+        .classList.toggle("active", category === "games");
+
+    document.getElementById("appsTab")
+        .classList.toggle("active", category === "apps");
+
+    showPage("home");
+
 }
 
-async function uploadImage(file){
- if(!file) return "";
- if(!["image/jpeg","image/png","image/webp"].includes(file.type))throw new Error("Choose a JPG, PNG or WEBP image.");
- if(file.size>5*1024*1024)throw new Error("Image must be smaller than 5 MB.");
- const token=await currentUser.getIdToken(true);
- const form=new FormData();form.append("file",file);
- const response=await fetch(UPLOAD_FUNCTION_URL,{method:"POST",headers:{"apikey":SUPABASE_PUBLISHABLE_KEY,"Authorization":"Bearer "+token},body:form});
- const result=await response.json().catch(()=>({}));
- if(!response.ok||!result.imageUrl)throw new Error(result.error||"Image upload failed. Check Edge Function settings.");
- return result.imageUrl;
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(page) {
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("detailPage").style.display = "none";
+
+    document.getElementById("profilePage").style.display = "none";
+
+    document.querySelectorAll(".bottom-nav button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    if (page === "home") {
+
+        document.getElementById("homePage").style.display = "block";
+
+        document.getElementById("homeNav").classList.add("active");
+
+    }
+
+    if (page === "games") {
+
+        document.getElementById("homePage").style.display = "block";
+
+        document.getElementById("gamesNav").classList.add("active");
+
+        showCategory("games");
+
+    }
+
+    if (page === "apps") {
+
+        document.getElementById("homePage").style.display = "block";
+
+        document.getElementById("appsNav").classList.add("active");
+
+        showCategory("apps");
+
+    }
+
+    if (page === "profile") {
+
+        document.getElementById("profilePage").style.display = "block";
+
+    }
+
 }
 
-window.changeAvatar=async event=>{
- const file=event.target.files?.[0];if(!file)return;
- try{
-  const url=await uploadImage(file);
-  await setDoc(doc(db,"users",currentUser.uid),{photoURL:url},{merge:true});
-  currentProfile.photoURL=url;setAvatar(url);alert("Profile picture updated!");
- }catch(e){alert(e.message);}finally{event.target.value="";}
+
+/* =========================
+   GAME DATABASE
+========================= */
+
+const appData = {
+
+    subway: {
+
+        name: "Subway Surfers",
+
+        image: "images/Qd.png",
+
+        category: "Game",
+
+        size: "260 MB",
+
+        downloads: "1B+",
+
+        version: "3.70.3",
+
+        description:
+        "Explore Subway Surfers and enjoy the exciting gameplay. Add your own accurate game description here.",
+
+        download:
+        "https://www.mediafire.com/file/s9wsvw27lv1oc07/Subway_Surfers_VIP_Mod_Menu_v3.73.0_By_AxionModder.apk/file",
+
+        screenshot: "images/screenshot.png"
+
+    },
+
+
+    game2: {
+
+        name: "Insert Game Name",
+
+        image: "images/game2.png",
+
+        category: "Game",
+
+        size: "120 MB",
+
+        downloads: "100K+",
+
+        version: "1.0",
+
+        description: "Insert your game description here.",
+
+        download: "#",
+
+        screenshot: "images/screenshot2.png"
+
+    },
+
+
+    app1: {
+
+        name: "Insert App Name",
+
+        image: "images/app1.png",
+
+        category: "App",
+
+        size: "50 MB",
+
+        downloads: "10K+",
+
+        version: "1.0",
+
+        description: "Insert your app description here.",
+
+        download: "#",
+
+        screenshot: "images/app-screenshot.png"
+
+    }
+
 };
 
-async function loadApps(){
- try{
-  const snap=await getDocs(collection(db,"apps"));
-  const remote=snap.docs.map(d=>({id:d.id,...d.data()}));
-  allApps=[...fallbackApps,...remote];
-  renderApps();
- }catch(e){console.error(e);allApps=[...fallbackApps];renderApps();alert("Could not load public uploads. Check Firestore rules.");}
+
+/* =========================
+   OPEN DETAILS
+========================= */
+
+function openDetails(id) {
+
+    const app = appData[id];
+
+    if (!app) return;
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("profilePage").style.display = "none";
+
+    document.getElementById("detailPage").style.display = "block";
+
+    document.getElementById("detailImage").src = app.image;
+
+    document.getElementById("detailName").textContent = app.name;
+
+    document.getElementById("detailCategory").textContent =
+        app.category;
+
+    document.getElementById("detailSize").textContent = app.size;
+
+    document.getElementById("detailDownloads").textContent =
+        app.downloads;
+
+    document.getElementById("detailVersion").textContent =
+        app.version;
+
+    document.getElementById("detailDescription").textContent =
+        app.description;
+
+    document.getElementById("detailScreenshot").src =
+        app.screenshot;
+
+    document.getElementById("installButton").href =
+        app.download;
+
+    document.getElementById("installButton").style.pointerEvents =
+        app.download === "#" ? "none" : "auto";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
 }
 
-function makeCard(item){
- const card=document.createElement("article");card.className="app-card";
- const img=document.createElement("img");img.src=item.imageUrl||"";img.alt=item.title||"App image";
- const title=document.createElement("h3");title.textContent=item.title||"Untitled";
- const desc=document.createElement("p");desc.textContent=item.description||"";
- const meta=document.createElement("div");meta.className="app-meta";
- const size=document.createElement("span");size.textContent=item.size||"—";
- const category=document.createElement("span");category.textContent=item.category||"";
- meta.append(size,category);card.append(img,title,desc,meta);
- card.addEventListener("click",()=>openDetails(item.id));return card;
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+function backHome() {
+
+    document.getElementById("detailPage").style.display = "none";
+
+    document.getElementById("homePage").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
 }
 
-window.renderApps=()=>{
- const term=$("searchInput").value.toLowerCase().trim();
- const games=$("gamesGrid"),apps=$("appsGrid");games.replaceChildren();apps.replaceChildren();
- const filtered=allApps.filter(a=>(a.title||"").toLowerCase().includes(term)||(a.description||"").toLowerCase().includes(term)||(a.ownerUsername||"").toLowerCase().includes(term));
- filtered.filter(a=>a.category==="Game").forEach(a=>games.append(makeCard(a)));
- filtered.filter(a=>a.category==="App").forEach(a=>apps.append(makeCard(a)));
- if(!games.children.length)games.innerHTML='<p style="color:#9caac1">No games found.</p>';
- if(!apps.children.length)apps.innerHTML='<p style="color:#9caac1">No apps found.</p>';
-};
 
-window.showCategory=category=>{
- activeCategory=category==="apps"?"App":"Game";
- $("gamesSection").style.display=activeCategory==="Game"?"block":"none";
- $("appsSection").style.display=activeCategory==="App"?"block":"none";
- $("gamesTab").classList.toggle("active",activeCategory==="Game");
- $("appsTab").classList.toggle("active",activeCategory==="App");
- showPage("home");
-};
+/* =========================
+   SEARCH SYSTEM
+========================= */
 
-window.showPage=page=>{
- ["homePage","detailPage","profilePage","uploadPage"].forEach(id=>$(id).style.display="none");
- document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
- if(page==="home"||page==="games"||page==="apps"){
-  $("homePage").style.display="block";
-  if(page==="games")showCategory("games");else if(page==="apps")showCategory("apps");
-  $("homeNav").classList.toggle("active",page==="home");
-  if(page==="games")$("gamesNav").classList.add("active");
-  if(page==="apps")$("appsNav").classList.add("active");
- }else if(page==="profile"){
-  $("profilePage").style.display="block";$("profilePage").scrollIntoView({behavior:"smooth"});
-  $("myUploadsGrid").replaceChildren();
-  allApps.filter(a=>a.uid===currentUser.uid).forEach(a=>$("myUploadsGrid").append(makeCard(a)));
-  $("homeNav").classList.remove("active");
- }else if(page==="upload"){
-  $("uploadPage").style.display="block";$("uploadNav").classList.add("active");
- }
- window.scrollTo({top:0,behavior:"smooth"});
-};
+function searchApps() {
 
-window.openDetails=id=>{
- const item=allApps.find(a=>a.id===id);if(!item)return;currentItem=item;
- $("homePage").style.display="none";$("profilePage").style.display="none";$("uploadPage").style.display="none";$("detailPage").style.display="block";
- $("detailImage").src=item.imageUrl||"";$("detailName").textContent=item.title||"";
- $("detailCategory").textContent=item.category||"";$("detailOwner").textContent="Uploaded by @"+(item.ownerUsername||"UIKI MODS");
- $("detailSize").textContent=item.size||"—";$("detailDownloads").textContent=String(item.downloadCount||0);
- $("detailVersion").textContent=item.version||"—";$("detailDescription").textContent=item.description||"";
- $("detailScreenshot").src=item.screenshotUrl||"";$("detailScreenshot").style.display=item.screenshotUrl?"block":"none";
- $("installButton").style.display=item.downloadUrl&&item.downloadUrl!=="#"?"block":"none";
- window.scrollTo({top:0,behavior:"smooth"});
-};
+    const term =
+        document.getElementById("searchInput")
+        .value.toLowerCase().trim();
 
-$("installButton").addEventListener("click",async e=>{
- if(!currentItem?.downloadUrl||currentItem.downloadUrl==="#"){e.preventDefault();return;}
- if(!/^https:\/\//i.test(currentItem.downloadUrl)){e.preventDefault();alert("Only secure HTTPS download links are allowed.");return;}
- if(!currentItem.id.startsWith("sample-")){
-  try{
-   const ref=doc(db,"apps",currentItem.id);
-   await runTransaction(db,async tx=>{const snap=await tx.get(ref);if(snap.exists())tx.update(ref,{downloadCount:increment(1)});});
-   currentItem.downloadCount=(currentItem.downloadCount||0)+1;$("detailDownloads").textContent=String(currentItem.downloadCount);
-  }catch(err){console.error("Click count update failed",err);}
- }
-});
+    const cards =
+        document.querySelectorAll(".app-card");
 
-$("uploadForm").addEventListener("submit",async e=>{
- e.preventDefault();setError("uploadError","");
- if(!currentUser||!currentProfile){setError("uploadError","Please login first.");return;}
- const title=$("itemTitle").value.trim(),description=$("itemDescription").value.trim(),category=$("itemCategory").value,size=$("itemSize").value.trim(),version=$("itemVersion").value.trim(),downloadUrl=$("itemDownload").value.trim(),imageFile=$("itemImage").files[0],shotFile=$("itemScreenshot").files[0];
- if(!/^https:\/\//i.test(downloadUrl)){setError("uploadError","Please enter a valid HTTPS download URL.");return;}
- if(!imageFile){setError("uploadError","Please choose an image.");return;}
- $("uploadBtn").disabled=true;$("uploadBtn").textContent="Uploading...";
- try{
-  const imageUrl=await uploadImage(imageFile);
-  const screenshotUrl=shotFile?await uploadImage(shotFile):"";
-  const record={title,description,category,size,version,downloadUrl,imageUrl,screenshotUrl,downloadCount:0,uid:currentUser.uid,ownerName:currentProfile.name,ownerUsername:currentProfile.username,createdAt:serverTimestamp()};
-  const newDoc=await addDoc(collection(db,"apps"),record);
-  allApps.push({id:newDoc.id,...record});
-  $("uploadForm").reset();renderApps();alert("Your "+category.toLowerCase()+" is now public!");showPage("home");
- }catch(err){setError("uploadError",friendlyError(err));}
- finally{$("uploadBtn").disabled=false;$("uploadBtn").textContent="Publish";}
-});
+    cards.forEach(card => {
 
-window.backHome=()=>showPage("home");
-window.logout=async()=>{await signOut(auth);};
+        const name =
+            card.dataset.name.toLowerCase();
+
+        card.style.display =
+            name.includes(term) ? "block" : "none";
+
+    });
+
+}
+
 </script>
+
 </body>
 </html>
