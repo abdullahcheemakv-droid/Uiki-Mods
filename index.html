@@ -230,4 +230,127 @@ async function uploadImage(file){
  if(!file) return "";
  if(!["image/jpeg","image/png","image/webp"].includes(file.type))throw new Error("Choose a JPG, PNG or WEBP image.");
  if(file.size>5*1024*1024)throw new Error("Image must be smaller than 5 MB.");
- const token=await currentUser.getIdToken(t
+ const token=await currentUser.getIdToken(true);
+ const form=new FormData();form.append("file",file);
+ const response=await fetch(UPLOAD_FUNCTION_URL,{method:"POST",headers:{"apikey":SUPABASE_PUBLISHABLE_KEY,"Authorization":"Bearer "+token},body:form});
+ const result=await response.json().catch(()=>({}));
+ if(!response.ok||!result.imageUrl)throw new Error(result.error||"Image upload failed. Check Edge Function settings.");
+ return result.imageUrl;
+}
+
+window.changeAvatar=async event=>{
+ const file=event.target.files?.[0];if(!file)return;
+ try{
+  const url=await uploadImage(file);
+  await setDoc(doc(db,"users",currentUser.uid),{photoURL:url},{merge:true});
+  currentProfile.photoURL=url;setAvatar(url);alert("Profile picture updated!");
+ }catch(e){alert(e.message);}finally{event.target.value="";}
+};
+
+async function loadApps(){
+ try{
+  const snap=await getDocs(collection(db,"apps"));
+  const remote=snap.docs.map(d=>({id:d.id,...d.data()}));
+  allApps=[...fallbackApps,...remote];
+  renderApps();
+ }catch(e){console.error(e);allApps=[...fallbackApps];renderApps();alert("Could not load public uploads. Check Firestore rules.");}
+}
+
+function makeCard(item){
+ const card=document.createElement("article");card.className="app-card";
+ const img=document.createElement("img");img.src=item.imageUrl||"";img.alt=item.title||"App image";
+ const title=document.createElement("h3");title.textContent=item.title||"Untitled";
+ const desc=document.createElement("p");desc.textContent=item.description||"";
+ const meta=document.createElement("div");meta.className="app-meta";
+ const size=document.createElement("span");size.textContent=item.size||"—";
+ const category=document.createElement("span");category.textContent=item.category||"";
+ meta.append(size,category);card.append(img,title,desc,meta);
+ card.addEventListener("click",()=>openDetails(item.id));return card;
+}
+
+window.renderApps=()=>{
+ const term=$("searchInput").value.toLowerCase().trim();
+ const games=$("gamesGrid"),apps=$("appsGrid");games.replaceChildren();apps.replaceChildren();
+ const filtered=allApps.filter(a=>(a.title||"").toLowerCase().includes(term)||(a.description||"").toLowerCase().includes(term)||(a.ownerUsername||"").toLowerCase().includes(term));
+ filtered.filter(a=>a.category==="Game").forEach(a=>games.append(makeCard(a)));
+ filtered.filter(a=>a.category==="App").forEach(a=>apps.append(makeCard(a)));
+ if(!games.children.length)games.innerHTML='<p style="color:#9caac1">No games found.</p>';
+ if(!apps.children.length)apps.innerHTML='<p style="color:#9caac1">No apps found.</p>';
+};
+
+window.showCategory=category=>{
+ activeCategory=category==="apps"?"App":"Game";
+ $("gamesSection").style.display=activeCategory==="Game"?"block":"none";
+ $("appsSection").style.display=activeCategory==="App"?"block":"none";
+ $("gamesTab").classList.toggle("active",activeCategory==="Game");
+ $("appsTab").classList.toggle("active",activeCategory==="App");
+ showPage("home");
+};
+
+window.showPage=page=>{
+ ["homePage","detailPage","profilePage","uploadPage"].forEach(id=>$(id).style.display="none");
+ document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
+ if(page==="home"||page==="games"||page==="apps"){
+  $("homePage").style.display="block";
+  if(page==="games")showCategory("games");else if(page==="apps")showCategory("apps");
+  $("homeNav").classList.toggle("active",page==="home");
+  if(page==="games")$("gamesNav").classList.add("active");
+  if(page==="apps")$("appsNav").classList.add("active");
+ }else if(page==="profile"){
+  $("profilePage").style.display="block";$("profilePage").scrollIntoView({behavior:"smooth"});
+  $("myUploadsGrid").replaceChildren();
+  allApps.filter(a=>a.uid===currentUser.uid).forEach(a=>$("myUploadsGrid").append(makeCard(a)));
+  $("homeNav").classList.remove("active");
+ }else if(page==="upload"){
+  $("uploadPage").style.display="block";$("uploadNav").classList.add("active");
+ }
+ window.scrollTo({top:0,behavior:"smooth"});
+};
+
+window.openDetails=id=>{
+ const item=allApps.find(a=>a.id===id);if(!item)return;currentItem=item;
+ $("homePage").style.display="none";$("profilePage").style.display="none";$("uploadPage").style.display="none";$("detailPage").style.display="block";
+ $("detailImage").src=item.imageUrl||"";$("detailName").textContent=item.title||"";
+ $("detailCategory").textContent=item.category||"";$("detailOwner").textContent="Uploaded by @"+(item.ownerUsername||"UIKI MODS");
+ $("detailSize").textContent=item.size||"—";$("detailDownloads").textContent=String(item.downloadCount||0);
+ $("detailVersion").textContent=item.version||"—";$("detailDescription").textContent=item.description||"";
+ $("detailScreenshot").src=item.screenshotUrl||"";$("detailScreenshot").style.display=item.screenshotUrl?"block":"none";
+ $("installButton").style.display=item.downloadUrl&&item.downloadUrl!=="#"?"block":"none";
+ window.scrollTo({top:0,behavior:"smooth"});
+};
+
+$("installButton").addEventListener("click",async e=>{
+ if(!currentItem?.downloadUrl||currentItem.downloadUrl==="#"){e.preventDefault();return;}
+ if(!/^https:\/\//i.test(currentItem.downloadUrl)){e.preventDefault();alert("Only secure HTTPS download links are allowed.");return;}
+ if(!currentItem.id.startsWith("sample-")){
+  try{
+   const ref=doc(db,"apps",currentItem.id);
+   await runTransaction(db,async tx=>{const snap=await tx.get(ref);if(snap.exists())tx.update(ref,{downloadCount:increment(1)});});
+   currentItem.downloadCount=(currentItem.downloadCount||0)+1;$("detailDownloads").textContent=String(currentItem.downloadCount);
+  }catch(err){console.error("Click count update failed",err);}
+ }
+});
+
+$("uploadForm").addEventListener("submit",async e=>{
+ e.preventDefault();setError("uploadError","");
+ if(!currentUser||!currentProfile){setError("uploadError","Please login first.");return;}
+ const title=$("itemTitle").value.trim(),description=$("itemDescription").value.trim(),category=$("itemCategory").value,size=$("itemSize").value.trim(),version=$("itemVersion").value.trim(),downloadUrl=$("itemDownload").value.trim(),imageFile=$("itemImage").files[0],shotFile=$("itemScreenshot").files[0];
+ if(!/^https:\/\//i.test(downloadUrl)){setError("uploadError","Please enter a valid HTTPS download URL.");return;}
+ if(!imageFile){setError("uploadError","Please choose an image.");return;}
+ $("uploadBtn").disabled=true;$("uploadBtn").textContent="Uploading...";
+ try{
+  const imageUrl=await uploadImage(imageFile);
+  const screenshotUrl=shotFile?await uploadImage(shotFile):"";
+  const record={title,description,category,size,version,downloadUrl,imageUrl,screenshotUrl,downloadCount:0,uid:currentUser.uid,ownerName:currentProfile.name,ownerUsername:currentProfile.username,createdAt:serverTimestamp()};
+  const newDoc=await addDoc(collection(db,"apps"),record);
+  allApps.push({id:newDoc.id,...record});
+  $("uploadForm").reset();renderApps();alert("Your "+category.toLowerCase()+" is now public!");showPage("home");
+ }catch(err){setError("uploadError",friendlyError(err));}
+ finally{$("uploadBtn").disabled=false;$("uploadBtn").textContent="Publish";}
+});
+
+window.backHome=()=>showPage("home");
+window.logout=async()=>{await signOut(auth);};
+</script>
+</body>
+</html>
