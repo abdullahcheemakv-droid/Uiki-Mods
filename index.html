@@ -1485,95 +1485,66 @@ async function recoverProfile(user){
 }
 
 
-/* AUTH STATE LISTENER */
+/* AUTH STATE LISTENER - FIXED */
 
-onAuthStateChanged(auth,async user=>{
+onAuthStateChanged(auth, async user => {
 
- const thisRun = ++authRunId;
+    const thisRun = ++authRunId;
 
- currentUser = user;
+    currentUser = user;
 
+    // Hide loading screen after Firebase checks login
+    $("loadingScreen").style.display = "none";
 
- if(!user){
+    // USER NOT LOGGED IN
+    if (!user) {
 
-  currentProfile = null;
+        currentProfile = null;
 
-  $("authScreen").style.display = "flex";
+        $("authScreen").style.display = "flex";
+        $("mainWebsite").style.display = "none";
 
-  $("mainWebsite").style.display = "none";
+        return;
+    }
 
-  return;
+    // USER ALREADY LOGGED IN
+    $("authScreen").style.display = "none";
+    $("mainWebsite").style.display = "block";
 
- }
+    // Show home page immediately
+    showPage("home");
 
+    // Load apps and profile without blocking homepage
+    try {
 
- while(signupInProgress){
+        const profilePromise = recoverProfile(user);
 
-  await new Promise(resolve=>setTimeout(resolve,100));
+        const appsPromise = loadApps();
 
-  if(thisRun !== authRunId) return;
+        currentProfile = await profilePromise;
 
- }
+        if (thisRun !== authRunId) return;
 
+        $("profileName").textContent =
+            currentProfile.name || user.displayName || "User";
 
- try{
+        $("profileUsername").textContent =
+            "@" + (currentProfile.username || "");
 
-  currentProfile = await recoverProfile(user);
+        $("profileEmail").textContent =
+            user.email || "";
 
+        setAvatar(currentProfile.photoURL || "");
 
-  if(thisRun !== authRunId) return;
+        await appsPromise;
 
+    } catch (error) {
 
-  $("authScreen").style.display = "none";
+        console.error("Account loading error:", error);
 
-  $("mainWebsite").style.display = "block";
-
-
-  $("profileName").textContent =
-  currentProfile.name || user.displayName || "User";
-
-
-  $("profileUsername").textContent =
-  "@"+(currentProfile.username || "");
-
-
-  $("profileEmail").textContent =
-  user.email || "";
-
-
-  setAvatar(currentProfile.photoURL || "");
-
-
-  await loadApps();
-
-
-  if(thisRun === authRunId){
-
-   showPage("home");
-
-  }
-
-
- }catch(error){
-
-  console.error("Account loading error:",error);
-
-
-  setError(
-   "loginError",
-   "Profile loading failed: "+friendlyError(error)
-  );
-
-
-  $("authScreen").style.display = "flex";
-
-  $("mainWebsite").style.display = "none";
-
- }
+    }
 
 });
-
-
 /* LOAD PUBLIC UPLOADS */
 
 async function loadApps(){
