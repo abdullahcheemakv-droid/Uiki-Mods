@@ -1815,28 +1815,19 @@ window.openDetails = id => {
 
  if(!item) return;
 
-
  currentItem = item;
 
-
  $("homePage").style.display = "none";
-
  $("profilePage").style.display = "none";
-
  $("uploadPage").style.display = "none";
-
  $("detailPage").style.display = "block";
 
-
  $("detailImage").src = item.imageUrl || "";
-
  $("detailName").textContent = item.title || "";
-
  $("detailCategory").textContent = item.category || "";
 
  $("detailOwner").textContent =
  "Uploaded by @"+(item.ownerUsername || "UIKI MODS");
-
 
  $("detailSize").textContent = item.size || "—";
 
@@ -1847,21 +1838,52 @@ window.openDetails = id => {
 
  $("detailDescription").textContent = item.description || "";
 
-
  $("detailScreenshot").src = item.screenshotUrl || "";
 
  $("detailScreenshot").style.display =
  item.screenshotUrl ? "block" : "none";
 
+ const installButton = $("installButton");
 
- $("installButton").style.display =
- item.downloadUrl ? "block" : "none";
+ const downloadUrl = item.downloadUrl || "";
 
+ if(downloadUrl){
+
+  try{
+
+   const url = new URL(downloadUrl);
+
+   if(url.protocol === "https:"){
+
+    installButton.href = url.href;
+    installButton.target = "_blank";
+    installButton.rel = "noopener noreferrer";
+    installButton.style.display = "block";
+
+   }else{
+
+    installButton.removeAttribute("href");
+    installButton.style.display = "none";
+
+   }
+
+  }catch(error){
+
+   installButton.removeAttribute("href");
+   installButton.style.display = "none";
+
+  }
+
+ }else{
+
+  installButton.removeAttribute("href");
+  installButton.style.display = "none";
+
+ }
 
  window.scrollTo({top:0,behavior:"smooth"});
 
 };
-
 
 /* INSTALL CLICK COUNTER */
 
