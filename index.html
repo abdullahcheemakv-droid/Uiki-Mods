@@ -1480,9 +1480,6 @@ onAuthStateChanged(auth, async user => {
 
     currentUser = user;
 
-    // Hide loading screen after Firebase checks login
-    $("loadingScreen").style.display = "none";
-
     // USER NOT LOGGED IN
     if (!user) {
 
