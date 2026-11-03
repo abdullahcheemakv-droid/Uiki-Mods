@@ -1779,6 +1779,18 @@ apps:"channelAppsContent"
 $(map[tab]).classList.add("active");
 button.classList.add("active");
 };
+  /* VIEW MY CHANNEL */
+
+window.viewMyChannel = function () {
+
+    if (!currentUser) {
+        alert("Please login first.");
+        return;
+    }
+
+    openChannel(currentUser.uid);
+
+};
 
 /* PUBLIC CHANNEL */
 
