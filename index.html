@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UIKI MODS - Games, Apps & Videos</title>
+<title>UIKI MODS</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -29,69 +29,42 @@ button{cursor:pointer}
 .hidden{display:none!important}
 
 .auth-screen{
-position:fixed;
-inset:0;
-z-index:99999;
-display:flex;
-justify-content:center;
-align-items:center;
+position:fixed;inset:0;z-index:99999;
+display:flex;justify-content:center;align-items:center;
 padding:20px;
-background:
-radial-gradient(circle at top left,#123c66,transparent 45%),
-radial-gradient(circle at bottom right,#153e39,transparent 45%),
-#080d19;
+background:radial-gradient(circle at top left,#123c66,transparent 45%),
+radial-gradient(circle at bottom right,#153e39,transparent 45%),#080d19;
 }
 
 .auth-box{
-width:100%;
-max-width:410px;
-background:#141d30;
-border:1px solid #34445d;
-padding:30px 25px;
-border-radius:25px;
-text-align:center;
-max-height:95vh;
-overflow:auto;
+width:100%;max-width:410px;
+background:#141d30;border:1px solid #34445d;
+padding:30px 25px;border-radius:25px;
+text-align:center;max-height:95vh;overflow:auto;
 }
 
-.auth-logo{width:75px;height:75px;object-fit:contain;margin-bottom:12px}
-
+.auth-logo{width:75px;height:75px;object-fit:contain}
 .auth-brand{
-font-size:32px;
-font-weight:900;
-background:linear-gradient(90deg,#00e69a,#4c9aff,#b58aff);
-background-clip:text;
--webkit-background-clip:text;
-color:transparent;
+font-size:32px;font-weight:900;
+background:linear-gradient(90deg,#00e69a,#4c9aff);
+background-clip:text;-webkit-background-clip:text;color:transparent;
 }
-
-.auth-subtitle{color:var(--muted);margin:12px 0 22px;line-height:1.6}
+.auth-subtitle{color:var(--muted);margin:12px 0 22px}
 
 .auth-box input,.form-control{
-width:100%;
-padding:14px;
-margin-bottom:12px;
-border-radius:12px;
-border:1px solid #34445d;
-background:#0d1729;
-color:white;
-outline:none;
-font-size:15px;
+width:100%;padding:14px;margin-bottom:12px;
+border-radius:12px;border:1px solid #34445d;
+background:#0d1729;color:white;outline:none;font-size:15px;
 }
 
 .primary-btn{
-width:100%;
-padding:15px;
+width:100%;padding:15px;
 background:linear-gradient(90deg,#087bdf,#4c9aff);
-color:white;
-font-weight:bold;
-font-size:16px;
-border:0;
-border-radius:12px;
-margin-top:8px;
+color:white;font-weight:bold;font-size:16px;
+border:0;border-radius:12px;margin-top:8px;
 }
 
-.primary-btn:disabled{opacity:.6;cursor:wait}
+.primary-btn:disabled{opacity:.6}
 
 .auth-switch{margin-top:20px;color:var(--muted);font-size:14px}
 .auth-switch span{color:#54a7ff;font-weight:bold;cursor:pointer}
@@ -100,61 +73,43 @@ margin-top:8px;
 #mainWebsite{display:none}
 
 .header{
-padding:14px 17px;
-background:#101a2d;
-display:flex;
-align-items:center;
-gap:12px;
-position:sticky;
-top:0;
-z-index:1000;
+padding:14px 17px;background:#101a2d;
+display:flex;align-items:center;gap:12px;
+position:sticky;top:0;z-index:1000;
 border-bottom:1px solid #263750;
 }
 
 .logo{width:45px;height:45px;object-fit:contain}
 .brand{flex:1}
 .brand h1{
-font-size:22px;
-font-weight:900;
+font-size:22px;font-weight:900;
 background:linear-gradient(90deg,#00e69a,#4c9aff);
-background-clip:text;
--webkit-background-clip:text;
-color:transparent;
+background-clip:text;-webkit-background-clip:text;color:transparent;
 }
 .brand p{color:#a8b8cc;font-size:11px;margin-top:4px}
 
 .profile-btn{
-width:42px;height:42px;
-border-radius:50%;
-border:1px solid #526780;
-background:#20334e;
-color:white;
-font-size:19px;
-overflow:hidden;
+width:42px;height:42px;border-radius:50%;
+border:1px solid #526780;background:#20334e;color:white;
+font-size:19px;overflow:hidden;
 }
 .profile-btn img{width:100%;height:100%;object-fit:cover}
 
 .search-container{padding:15px 17px}
 .search-box{
-display:flex;
-align-items:center;
-background:#19263c;
-border:1px solid #34445d;
-padding:0 15px;
-border-radius:30px;
+display:flex;align-items:center;
+background:#19263c;border:1px solid #34445d;
+padding:0 15px;border-radius:30px;
 }
-.search-box span{font-size:20px;color:#91a6c1}
 .search-box input{
-width:100%;padding:14px 12px;
-background:transparent;border:0;outline:0;color:white;font-size:15px;
+width:100%;padding:14px 12px;background:transparent;
+border:0;outline:0;color:white;font-size:15px;
 }
 
 .hero{
-margin:5px 17px 25px;
-padding:28px 22px;
+margin:5px 17px 25px;padding:28px 22px;
 border-radius:22px;
-background:
-radial-gradient(circle at top right,#2865a8,transparent 60%),
+background:radial-gradient(circle at top right,#2865a8,transparent 60%),
 linear-gradient(130deg,#142f52,#111c31);
 border:1px solid #315276;
 }
@@ -166,66 +121,65 @@ margin-top:20px;padding:13px 22px;
 background:white;color:#14243b;border:0;border-radius:25px;font-weight:bold;
 }
 
-.category-tabs,.sub-tabs{
-display:flex;gap:10px;padding:0 17px;margin-bottom:22px;overflow-x:auto;
+.category-tabs,.channel-tabs,.sub-tabs{
+display:flex;gap:10px;padding:0 17px;
+margin-bottom:22px;overflow-x:auto;
 }
-.category-tabs button,.sub-tabs button{
-white-space:nowrap;
-padding:11px 22px;border-radius:25px;
-background:#19263c;border:1px solid #34445d;color:#cbd5e1;font-weight:bold;
+
+.category-tabs button,.channel-tabs button,.sub-tabs button{
+white-space:nowrap;padding:11px 20px;
+border-radius:25px;background:#19263c;
+border:1px solid #34445d;color:#cbd5e1;font-weight:bold;
 }
-.category-tabs button.active,.sub-tabs button.active{
+
+.category-tabs button.active,.channel-tabs button.active,.sub-tabs button.active{
 background:#176ac0;color:white;border-color:#4c9aff;
 }
 
 .section{padding:0 17px;margin-bottom:30px}
 .section-heading{
-display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;
+display:flex;justify-content:space-between;
+align-items:center;margin-bottom:16px;
 }
 .section-heading h2{font-size:20px}
-.section-heading span{color:#65aaff;font-size:13px}
 
 .app-grid{
-display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:13px;
+display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;
 }
 
 .app-card{
-background:var(--card);
-border:1px solid #263750;
-border-radius:17px;
-padding:13px;
-cursor:pointer;
-min-width:0;
+background:var(--card);border:1px solid #263750;
+border-radius:17px;padding:13px;cursor:pointer;min-width:0;
 }
-.app-card:active{transform:scale(.98)}
 .app-card img{
 width:75px;height:75px;border-radius:17px;
 object-fit:cover;background:#263750;margin-bottom:12px;
 }
-.app-card h3{font-size:15px;margin-bottom:7px;overflow-wrap:anywhere}
+.app-card h3{font-size:15px;margin-bottom:7px}
 .app-card p{color:var(--muted);font-size:12px;line-height:1.5}
 .app-meta{
-display:flex;justify-content:space-between;gap:5px;
+display:flex;justify-content:space-between;
 margin-top:13px;color:#83b8ff;font-size:11px;
 }
 
 .page{display:none;padding:18px}
 .back-btn{
-background:transparent;border:0;color:white;font-size:28px;margin-bottom:20px;
+background:transparent;border:0;color:white;
+font-size:28px;margin-bottom:20px;
 }
 
 .detail-header{display:flex;gap:17px;align-items:center}
 .detail-header img{
-width:100px;height:100px;object-fit:cover;border-radius:20px;background:#263750;
+width:100px;height:100px;object-fit:cover;
+border-radius:20px;background:#263750;
 }
 .detail-header h1{font-size:22px;margin-bottom:8px}
 .detail-header p{color:var(--muted);font-size:13px;margin-bottom:5px}
 
 .detail-stats{
 display:grid;grid-template-columns:repeat(3,1fr);
-background:#152238;padding:20px 5px;border-radius:17px;margin:25px 0;text-align:center;
+background:#152238;padding:20px 5px;
+border-radius:17px;margin:25px 0;text-align:center;
 }
 .detail-stats strong{display:block;font-size:17px;margin-bottom:8px}
 .detail-stats span{color:#9bacc2;font-size:11px}
@@ -234,26 +188,10 @@ background:#152238;padding:20px 5px;border-radius:17px;margin:25px 0;text-align:
 display:block;width:100%;padding:16px;
 background:linear-gradient(90deg,#087bdf,#4c9aff);
 color:white;text-align:center;text-decoration:none;
-font-weight:bold;font-size:18px;border-radius:30px;margin-bottom:25px;border:0;
+font-weight:bold;font-size:18px;border-radius:30px;margin-bottom:25px;
 }
+
 .detail-description{color:#b5c3d6;line-height:1.8;margin:18px 0;font-size:14px}
-
-.profile-card{
-text-align:center;background:var(--card);padding:25px 20px;
-border-radius:20px;margin-bottom:22px;
-}
-.profile-avatar{
-width:100px;height:100px;border-radius:50%;
-object-fit:cover;background:#263750;margin-bottom:15px;
-}
-.profile-card h2{margin-bottom:8px}
-.profile-card p{color:var(--muted);margin-bottom:12px;overflow-wrap:anywhere}
-
-.logout-btn,.secondary-btn{
-background:#9e303b;color:white;border:0;padding:12px 22px;
-border-radius:12px;font-weight:bold;
-}
-.secondary-btn{background:#294563;margin:5px}
 
 .form-panel{
 background:var(--card);border:1px solid #263750;
@@ -263,36 +201,123 @@ border-radius:18px;padding:18px;margin-bottom:22px;
 .form-panel label{display:block;color:#b8c8dc;font-size:13px;margin:10px 0 6px}
 .form-control{display:block;margin-bottom:10px}
 .form-panel textarea{min-height:95px;resize:vertical}
-.form-panel select option{background:#142033}
 
 .notice{
 padding:12px;border-radius:12px;background:#172d43;
 color:#bcd5ef;font-size:13px;line-height:1.5;margin:12px 0;
 }
 
+/* CHANNEL PROFILE */
+
+.channel-cover{
+height:125px;border-radius:15px;
+background:linear-gradient(120deg,#0753a5,#00a879,#142d52);
+margin-bottom:-48px;
+}
+
+.channel-header{
+position:relative;
+background:linear-gradient(130deg,#142f52,#111c31);
+border:1px solid #315276;border-radius:18px;
+padding:15px;margin-bottom:20px;
+}
+
+.channel-top{
+display:flex;align-items:flex-end;gap:15px;
+}
+
+.channel-avatar{
+width:95px;height:95px;border-radius:50%;
+object-fit:cover;background:#263750;
+border:4px solid #111c30;
+}
+
+.channel-title{flex:1;min-width:0}
+.channel-title h2{font-size:21px;overflow-wrap:anywhere}
+.channel-title p{color:var(--muted);font-size:13px;margin-top:6px}
+
+.edit-icon{
+width:43px;height:43px;flex-shrink:0;
+border-radius:50%;border:1px solid #49617d;
+background:#203550;color:white;font-size:21px;
+}
+
+.channel-bio{
+color:#c3d1e4;line-height:1.6;
+font-size:13px;margin:15px 0;
+}
+
+.channel-stats{
+display:flex;gap:25px;margin:15px 0;
+}
+.channel-stats strong{display:block;font-size:19px}
+.channel-stats span{font-size:12px;color:var(--muted)}
+
+.subscribe-btn{
+padding:12px 25px;border:0;border-radius:25px;
+background:#f1f3f5;color:#111;font-weight:bold;font-size:14px;
+}
+.subscribe-btn.active{background:#294563;color:white}
+
+.channel-tabs{
+padding:0;margin:20px 0 22px;
+border-bottom:1px solid #293a54;
+border-radius:0;
+}
+
+.channel-tabs button{
+background:transparent;border:0;border-radius:0;
+padding:13px 17px;color:#9caac1;
+}
+.channel-tabs button.active{
+background:transparent;color:#62aaff;
+border-bottom:3px solid #4c9aff;
+}
+
+.channel-content{display:none}
+.channel-content.active{display:block}
+
+/* VIDEOS */
+
 .video-card{
-background:var(--card);
-border:1px solid #263750;
-border-radius:16px;
-overflow:hidden;
-cursor:pointer;
-margin-bottom:17px;
+background:var(--card);border:1px solid #263750;
+border-radius:16px;overflow:hidden;cursor:pointer;margin-bottom:17px;
 }
+
 .video-thumb{
-width:100%;
-aspect-ratio:16/9;
-object-fit:cover;
-display:block;
-background:#17263b;
+width:100%;aspect-ratio:16/9;object-fit:cover;
+display:block;background:#17263b;
 }
+
 .video-info{padding:13px}
 .video-info h3{font-size:15px;margin-bottom:7px;line-height:1.4}
-.video-info p{font-size:12px;color:var(--muted);line-height:1.5}
+.video-info p{font-size:12px;color:var(--muted)}
 .video-meta{font-size:11px;color:#83b8ff;margin-top:9px}
 
-.video-player{
-width:100%;max-height:420px;background:#000;border-radius:15px;
+.short-grid{
+display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
 }
+.short-card{
+background:var(--card);border:1px solid #263750;
+border-radius:14px;overflow:hidden;cursor:pointer;
+}
+.short-thumb{
+width:100%;aspect-ratio:9/16;object-fit:cover;
+}
+.short-info{padding:10px;font-size:13px}
+
+.post-card{
+background:var(--card);border:1px solid #263750;
+border-radius:16px;padding:15px;margin-bottom:15px;
+}
+.post-user{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.post-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.post-user strong{font-size:13px}
+.post-user span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.post-text{line-height:1.6;font-size:14px;overflow-wrap:anywhere}
+.post-image{width:100%;border-radius:12px;margin-top:12px;max-height:400px;object-fit:cover}
+
+.video-player{width:100%;max-height:420px;background:#000;border-radius:15px}
 .video-title{font-size:21px;line-height:1.4;margin:15px 0 8px}
 .video-description{color:#bdcde0;line-height:1.6;font-size:14px;margin:12px 0}
 
@@ -303,68 +328,72 @@ border:1px solid #395574;border-radius:25px;font-weight:bold;
 }
 .action-btn.active{background:#176ac0;border-color:#4c9aff}
 
-.channel-header{
-background:linear-gradient(130deg,#142f52,#111c31);
-border:1px solid #315276;border-radius:20px;
-padding:23px;text-align:center;margin-bottom:22px;
-}
-.channel-avatar{
-width:90px;height:90px;border-radius:50%;
-object-fit:cover;background:#263750;margin-bottom:12px;
-}
-.channel-header h2{margin-bottom:7px}
-.channel-header p{color:var(--muted);font-size:13px;margin:5px 0}
-.channel-bio{color:#c3d1e4;line-height:1.5;margin:12px 0}
-.channel-stats{display:flex;justify-content:center;gap:25px;margin:15px 0}
-.channel-stats strong{display:block;font-size:18px}
-.channel-stats span{font-size:11px;color:var(--muted)}
-
-.comment{
-background:#17253a;border-radius:12px;padding:12px;margin:10px 0;
-}
+.comment{background:#17253a;border-radius:12px;padding:12px;margin:10px 0}
 .comment strong{font-size:13px}
 .comment p{font-size:13px;color:#c3d1e4;margin-top:7px;line-height:1.5}
+
+.profile-card{
+text-align:center;background:var(--card);
+padding:25px 20px;border-radius:20px;margin-bottom:22px;
+}
+.profile-avatar{
+width:100px;height:100px;border-radius:50%;
+object-fit:cover;background:#263750;margin-bottom:15px;
+}
+.profile-card p{color:var(--muted);margin:10px 0}
+
+.secondary-btn{
+background:#294563;color:white;border:0;
+padding:12px 22px;border-radius:12px;font-weight:bold;
+}
+.logout-btn{
+background:#9e303b;color:white;border:0;
+padding:12px 22px;border-radius:12px;font-weight:bold;
+}
 
 .bottom-nav{
 position:fixed;bottom:0;left:0;width:100%;height:75px;
 background:#111c30;border-top:1px solid #293a54;
-display:flex;justify-content:space-around;align-items:center;z-index:5000;
+display:flex;justify-content:space-around;
+align-items:center;z-index:5000;
 }
 .bottom-nav button{
 background:transparent;border:0;color:#92a5bf;
-display:flex;flex-direction:column;align-items:center;gap:5px;
-font-size:11px;width:20%;
+display:flex;flex-direction:column;align-items:center;
+gap:5px;font-size:11px;width:20%;
 }
 .bottom-nav button span:first-child{font-size:21px}
 .bottom-nav button.active{color:#61aaff}
-.bottom-nav button.active span:first-child{
-background:#174e80;border-radius:25px;padding:4px 15px;
-}
 
 .empty-message{color:#9caac1;font-size:13px;padding:15px 0}
+
 @media(max-width:360px){
 .app-grid{grid-template-columns:1fr}
-.hero h2{font-size:24px}
+.channel-avatar{width:75px;height:75px}
+.channel-title h2{font-size:17px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- AUTH -->
+
 <div class="auth-screen" id="authScreen">
 <div class="auth-box">
-<img class="auth-logo" src="images/Jagur.png" alt="UIKI Logo">
+
+<img class="auth-logo" src="images/Jagur.png">
 <h1 class="auth-brand">UIKI MODS</h1>
-<p class="auth-subtitle">Discover amazing games, apps and videos.</p>
+<p class="auth-subtitle">Games, Apps, Videos & Creators</p>
 
 <div id="signupForm">
 <input id="signupName" placeholder="Your Name" maxlength="40">
 <input id="signupUsername" placeholder="Unique username" maxlength="20">
 <input id="signupEmail" type="email" placeholder="Email Address">
-<input id="signupPassword" type="password" placeholder="Create Password (8+ characters)">
+<input id="signupPassword" type="password" placeholder="Password (8+ characters)">
 <button class="primary-btn" id="signupBtn" onclick="signup()">Create Account</button>
 <p class="auth-error" id="signupError"></p>
-<div class="auth-switch">Already have an account? <span onclick="showLogin()">Login</span></div>
+<div class="auth-switch">Already registered? <span onclick="showLogin()">Login</span></div>
 </div>
 
 <div id="loginForm" style="display:none">
@@ -374,23 +403,31 @@ background:#174e80;border-radius:25px;padding:4px 15px;
 <p class="auth-error" id="loginError"></p>
 <div class="auth-switch">New user? <span onclick="showSignup()">Sign Up</span></div>
 </div>
+
 </div>
 </div>
 
 <div id="mainWebsite">
 
 <header class="header">
-<img class="logo" src="images/Jagur.png" alt="Logo">
-<div class="brand"><h1>UIKI MODS</h1><p>GAMES • APPS • VIDEOS</p></div>
-<button class="profile-btn" onclick="showPage('profile')" id="headerAvatar">☻</button>
+<img class="logo" src="images/Jagur.png">
+<div class="brand">
+<h1>UIKI MODS</h1>
+<p>GAMES • APPS • VIDEOS</p>
+</div>
+<button class="profile-btn" onclick="openChannel(currentUser.uid)" id="headerAvatar">☻</button>
 </header>
 
 <div class="search-container">
 <div class="search-box">
 <span>⌕</span>
-<input type="search" id="searchInput" placeholder="Search games, apps, videos, channels..." oninput="searchEverything()">
+<input type="search" id="searchInput"
+placeholder="Search creators, games, videos..."
+oninput="searchEverything()">
 </div>
 </div>
+
+<!-- HOME -->
 
 <main id="homePage">
 
@@ -421,186 +458,314 @@ background:#174e80;border-radius:25px;padding:4px 15px;
 <div id="homeVideos"></div>
 </section>
 
+<section class="section">
+<div class="section-heading"><h2>Popular Creators</h2></div>
+<div id="homeChannels"></div>
+</section>
+
 </main>
 
 <!-- APP DETAILS -->
+
 <section class="page" id="detailPage">
-<button class="back-btn" onclick="backHome()">←</button>
+<button class="back-btn" onclick="showPage('home')">←</button>
+
 <div class="detail-header">
-<img id="detailImage" alt="App Icon">
+<img id="detailImage">
 <div>
-<h1 id="detailName">Item</h1>
+<h1 id="detailName"></h1>
 <p id="detailCategory"></p>
 <p id="detailOwner"></p>
 </div>
 </div>
+
 <div class="detail-stats">
-<div><strong id="detailSize">—</strong><span>Download Size</span></div>
+<div><strong id="detailSize">—</strong><span>Size</span></div>
 <div><strong id="detailDownloads">0</strong><span>Downloads</span></div>
 <div><strong id="detailVersion">—</strong><span>Version</span></div>
 </div>
-<a href="#" target="_blank" rel="noopener noreferrer" class="install-btn" id="installButton">Install</a>
+
+<a class="install-btn" id="installButton" href="#" target="_blank">Install</a>
 <h2>About this app</h2>
 <p class="detail-description" id="detailDescription"></p>
-<h2 style="margin:20px 0">Screenshot</h2>
-<img id="detailScreenshot" style="width:100%;border-radius:15px" alt="Screenshot">
+<img id="detailScreenshot" style="width:100%;border-radius:15px">
 </section>
 
-<!-- VIDEOS PAGE -->
+<!-- VIDEOS -->
+
 <section class="page" id="videosPage">
-<div class="section-heading"><h2>Videos</h2></div>
+<h2 style="margin-bottom:18px">Videos</h2>
 <div id="allVideos"></div>
 </section>
 
-<!-- VIDEO PLAYER PAGE -->
+<!-- VIDEO PLAYER -->
+
 <section class="page" id="videoPage">
 <button class="back-btn" onclick="showPage('videos')">←</button>
+
 <video id="videoPlayer" class="video-player" controls playsinline></video>
 <h2 class="video-title" id="watchTitle"></h2>
 <p class="video-meta" id="watchMeta"></p>
+
 <div class="action-row">
 <button class="action-btn" id="likeButton" onclick="toggleLike()">♡ Like</button>
-<button class="action-btn" id="watchChannelButton" onclick="openVideoChannel()">View Channel</button>
+<button class="action-btn" onclick="openVideoChannel()">View Channel</button>
 </div>
+
 <p class="video-description" id="watchDescription"></p>
 
 <div class="form-panel">
 <h3>Comments</h3>
-<textarea class="form-control" id="commentInput" maxlength="1000" placeholder="Write a comment..."></textarea>
+<textarea class="form-control" id="commentInput" placeholder="Write a comment..."></textarea>
 <button class="primary-btn" onclick="postComment()">Post Comment</button>
 <div id="commentsList"></div>
 </div>
 </section>
 
-<!-- CHANNEL PAGE -->
+<!-- PUBLIC CHANNEL PROFILE -->
+
 <section class="page" id="channelPage">
+
 <button class="back-btn" onclick="showPage('home')">←</button>
+
+<div class="channel-cover"></div>
+
 <div class="channel-header">
-<img class="channel-avatar" id="channelAvatar" alt="Channel">
+
+<div class="channel-top">
+<img class="channel-avatar" id="channelAvatar">
+
+<div class="channel-title">
 <h2 id="channelName"></h2>
 <p id="channelUsername"></p>
+</div>
+
+<button class="edit-icon hidden" id="channelEditButton"
+onclick="openEditProfile()" title="Edit Profile">✎</button>
+</div>
+
 <div class="channel-stats">
-<div><strong id="channelSubscribers">0</strong><span>Subscribers</span></div>
-<div><strong id="channelVideoCount">0</strong><span>Videos</span></div>
+<div>
+<strong id="channelSubscribers">0</strong>
+<span>Subscribers</span>
 </div>
+<div>
+<strong id="channelVideoCount">0</strong>
+<span>Videos</span>
+</div>
+<div>
+<strong id="channelShortCount">0</strong>
+<span>Shorts</span>
+</div>
+</div>
+
 <p class="channel-bio" id="channelBio"></p>
-<button class="primary-btn" id="subscribeButton" onclick="toggleSubscribe()" style="max-width:230px">Subscribe</button>
+
+<button class="subscribe-btn" id="subscribeButton"
+onclick="toggleSubscribe()">Subscribe</button>
+
 </div>
 
-<section class="section">
-<h2 style="margin-bottom:15px">Videos</h2>
+<!-- CHANNEL NAVIGATION -->
+
+<div class="channel-tabs">
+<button class="active" onclick="switchChannelTab('home',this)">Home</button>
+<button onclick="switchChannelTab('videos',this)">Videos</button>
+<button onclick="switchChannelTab('shorts',this)">Shorts</button>
+<button onclick="switchChannelTab('posts',this)">Posts</button>
+<button onclick="switchChannelTab('apps',this)">Games & Apps</button>
+</div>
+
+<div class="channel-content active" id="channelHome">
+<h3 style="margin-bottom:15px">Latest Uploads</h3>
+<div id="channelHomeContent"></div>
+</div>
+
+<div class="channel-content" id="channelVideosContent">
+<h3 style="margin-bottom:15px">Videos</h3>
 <div id="channelVideos"></div>
-</section>
-
-<section class="section">
-<h2 style="margin-bottom:15px">Games & Apps</h2>
-<div class="app-grid" id="channelApps"></div>
-</section>
-</section>
-
-<!-- PROFILE PAGE -->
-<section class="page" id="profilePage">
-<div class="profile-card">
-<img class="profile-avatar" id="profileAvatar" alt="Profile picture">
-<h2 id="profileName">User</h2>
-<p id="profileUsername"></p>
-<p id="profileEmail"></p>
-<button class="secondary-btn" onclick="openEditProfile()">✎ Edit Profile</button>
-<br><br>
-<button class="logout-btn" onclick="logout()">Logout</button>
 </div>
 
-<div class="form-panel hidden" id="editProfilePanel">
+<div class="channel-content" id="channelShortsContent">
+<h3 style="margin-bottom:15px">Shorts</h3>
+<div id="channelShorts" class="short-grid"></div>
+</div>
+
+<div class="channel-content" id="channelPostsContent">
+<h3 style="margin-bottom:15px">Posts</h3>
+<div id="channelPosts"></div>
+</div>
+
+<div class="channel-content" id="channelAppsContent">
+<h3 style="margin-bottom:15px">Games & Apps</h3>
+<div class="app-grid" id="channelApps"></div>
+</div>
+
+</section>
+
+<!-- EDIT PROFILE -->
+
+<section class="page" id="editProfilePage">
+<button class="back-btn" onclick="openChannel(currentUser.uid)">←</button>
+
+<div class="form-panel">
 <h2>Edit Profile</h2>
-<label>Name</label>
+
+<label>Channel Name</label>
 <input class="form-control" id="editName" maxlength="40">
-<label>Bio</label>
+
+<label>Username</label>
+<input class="form-control" id="editUsername" disabled>
+
+<label>Bio / Description</label>
 <textarea class="form-control" id="editBio" maxlength="300"></textarea>
+
 <label>Profile Picture</label>
 <input class="form-control" id="editAvatar" type="file" accept="image/png,image/jpeg,image/webp">
+
 <button class="primary-btn" onclick="saveProfile()">Save Changes</button>
 <p class="auth-error" id="editProfileError"></p>
 </div>
-
-<section class="section">
-<div class="section-heading"><h2>My Uploads</h2></div>
-<div class="app-grid" id="myUploadsGrid"></div>
-<div id="myVideos"></div>
-</section>
 </section>
 
-<!-- UPLOAD PAGE -->
+<!-- UPLOAD -->
+
 <section class="page" id="uploadPage">
-<button class="back-btn" onclick="showPage('home')">←</button>
+
+<h2 style="margin-bottom:20px">Create Content</h2>
 
 <div class="sub-tabs">
-<button class="active" id="appUploadTab" onclick="switchUploadTab('app')">Game / App</button>
-<button id="videoUploadTab" onclick="switchUploadTab('video')">Video</button>
+<button class="active" onclick="switchUploadTab('app')" id="appUploadTab">Game / App</button>
+<button onclick="switchUploadTab('video')" id="videoUploadTab">Video</button>
+<button onclick="switchUploadTab('short')" id="shortUploadTab">Short</button>
+<button onclick="switchUploadTab('post')" id="postUploadTab">Post</button>
 </div>
+
+<!-- APP UPLOAD -->
 
 <div class="form-panel" id="appUploadPanel">
 <h2>Upload Game / App</h2>
-<div class="notice">Images: JPG, PNG or WEBP, maximum 5 MB.</div>
+
 <form id="uploadForm">
+
 <label>Title</label>
-<input class="form-control" id="itemTitle" maxlength="70" required>
+<input class="form-control" id="itemTitle" required maxlength="70">
+
 <label>Category</label>
-<select class="form-control" id="itemCategory"><option value="Game">Game</option><option value="App">App</option></select>
+<select class="form-control" id="itemCategory">
+<option value="Game">Game</option>
+<option value="App">App</option>
+</select>
+
 <label>Description</label>
-<textarea class="form-control" id="itemDescription" maxlength="2000" required></textarea>
+<textarea class="form-control" id="itemDescription" required></textarea>
+
 <label>Size</label>
-<input class="form-control" id="itemSize" maxlength="30" required placeholder="120 MB">
+<input class="form-control" id="itemSize" placeholder="120 MB" required>
+
 <label>Version</label>
-<input class="form-control" id="itemVersion" maxlength="30" required placeholder="1.0">
-<label>Download URL (HTTPS)</label>
-<input class="form-control" id="itemDownload" type="url" required placeholder="https://example.com/download">
-<label>App / Game image</label>
-<input class="form-control" id="itemImage" type="file" accept="image/png,image/jpeg,image/webp" required>
-<label>Screenshot (optional)</label>
-<input class="form-control" id="itemScreenshot" type="file" accept="image/png,image/jpeg,image/webp">
-<button class="primary-btn" id="uploadBtn" type="submit">Publish</button>
+<input class="form-control" id="itemVersion" placeholder="1.0" required>
+
+<label>Download URL</label>
+<input class="form-control" id="itemDownload" type="url" required>
+
+<label>Image</label>
+<input class="form-control" id="itemImage" type="file" accept="image/*" required>
+
+<label>Screenshot</label>
+<input class="form-control" id="itemScreenshot" type="file" accept="image/*">
+
+<button class="primary-btn" id="uploadBtn">Publish</button>
 <p class="auth-error" id="uploadError"></p>
+
 </form>
 </div>
+
+<!-- VIDEO / SHORT UPLOAD -->
 
 <div class="form-panel hidden" id="videoUploadPanel">
-<h2>Upload Video</h2>
-<div class="notice">
-Supported video formats: MP4, WEBM and MOV. Maximum 100 MB per video in this website. Your Supabase bucket must also allow the file size.
-</div>
+<h2 id="videoFormHeading">Upload Video</h2>
+
 <form id="videoForm">
-<label>Video Title</label>
-<input class="form-control" id="videoTitle" maxlength="100" required>
+
+<label>Title</label>
+<input class="form-control" id="videoTitle" required maxlength="100">
+
 <label>Description</label>
-<textarea class="form-control" id="videoDescription" maxlength="3000" required></textarea>
+<textarea class="form-control" id="videoDescription"></textarea>
+
 <label>Video File</label>
-<input class="form-control" id="videoFile" type="file" accept="video/mp4,video/webm,video/quicktime" required>
+<input class="form-control" id="videoFile" type="file"
+accept="video/mp4,video/webm,video/quicktime" required>
+
 <label>Thumbnail</label>
-<input class="form-control" id="videoThumbnail" type="file" accept="image/png,image/jpeg,image/webp" required>
-<button class="primary-btn" id="videoUploadBtn" type="submit">Upload Video</button>
+<input class="form-control" id="videoThumbnail" type="file"
+accept="image/png,image/jpeg,image/webp" required>
+
+<button class="primary-btn" id="videoUploadBtn">Upload</button>
 <p class="auth-error" id="videoUploadError"></p>
+
 </form>
 </div>
+
+<!-- POST UPLOAD -->
+
+<div class="form-panel hidden" id="postUploadPanel">
+<h2>Create Post</h2>
+
+<form id="postForm">
+
+<label>Write something</label>
+<textarea class="form-control" id="postText"
+maxlength="3000" required placeholder="Share something with your subscribers..."></textarea>
+
+<label>Image (Optional)</label>
+<input class="form-control" id="postImage" type="file"
+accept="image/png,image/jpeg,image/webp">
+
+<button class="primary-btn" id="postUploadBtn">Publish Post</button>
+<p class="auth-error" id="postUploadError"></p>
+
+</form>
+</div>
+
 </section>
 
-<!-- SEARCH RESULTS -->
+<!-- SEARCH -->
+
 <section class="page" id="searchPage">
 <button class="back-btn" onclick="showPage('home')">←</button>
-<h2 style="margin-bottom:18px">Search Results</h2>
-<h3 style="margin-bottom:12px">Channels</h3>
+
+<h2>Search Results</h2>
+
+<h3 style="margin:20px 0 12px">Channels</h3>
 <div id="searchChannels"></div>
-<h3 style="margin:22px 0 12px">Videos</h3>
+
+<h3 style="margin:20px 0 12px">Videos</h3>
 <div id="searchVideos"></div>
-<h3 style="margin:22px 0 12px">Games & Apps</h3>
+
+<h3 style="margin:20px 0 12px">Games & Apps</h3>
 <div class="app-grid" id="searchApps"></div>
+</section>
+
+<!-- MY PROFILE -->
+
+<section class="page" id="profilePage">
+<div class="profile-card">
+<img class="profile-avatar" id="profileAvatar">
+<h2 id="profileName"></h2>
+<p id="profileUsername"></p>
+<button class="secondary-btn" onclick="openChannel(currentUser.uid)">View My Channel</button>
+<br><br>
+<button class="logout-btn" onclick="logout()">Logout</button>
+</div>
 </section>
 
 <nav class="bottom-nav">
 <button class="active" id="homeNav" onclick="showPage('home')"><span>⌂</span><span>Home</span></button>
-<button id="gamesNav" onclick="showPage('games')"><span>🎮</span><span>Games</span></button>
-<button id="appsNav" onclick="showPage('apps')"><span>▦</span><span>Apps</span></button>
 <button id="videosNav" onclick="showPage('videos')"><span>▶</span><span>Videos</span></button>
 <button id="uploadNav" onclick="showPage('upload')"><span>＋</span><span>Upload</span></button>
+<button id="profileNav" onclick="showPage('profile')"><span>☻</span><span>Profile</span></button>
 </nav>
 
 </div>
@@ -610,13 +775,18 @@ Supported video formats: MP4, WEBM and MOV. Maximum 100 MB per video in this web
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 import {
-getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,
-onAuthStateChanged,signOut,updateProfile
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut,
+updateProfile
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 import {
-getFirestore,doc,getDoc,setDoc,addDoc,collection,getDocs,
-query,where,serverTimestamp,runTransaction,increment
+getFirestore,doc,getDoc,setDoc,addDoc,collection,
+getDocs,query,where,serverTimestamp,runTransaction,
+increment,deleteDoc
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 import {createClient} from "https://esm.sh/@supabase/supabase-js@2";
@@ -640,6 +810,7 @@ const db=getFirestore(firebaseApp);
 
 const SUPABASE_URL="https://lcurseyadykbgqorqiwi.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_Zv08l9LeI-5UqHoHybFd6Q_4p6UDr5G";
+
 const UPLOAD_FUNCTION_URL=SUPABASE_URL+"/functions/v1/upload-image";
 const VIDEO_FUNCTION_URL=SUPABASE_URL+"/functions/v1/upload-video";
 
@@ -647,11 +818,13 @@ const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 
 let currentUser=null;
 let currentProfile=null;
+let currentChannel=null;
+let currentVideo=null;
+let currentItem=null;
 let allApps=[];
 let allVideos=[];
-let currentItem=null;
-let currentVideo=null;
-let currentChannel=null;
+let allPosts=[];
+let uploadMode="video";
 let signupInProgress=false;
 let authRunId=0;
 
@@ -663,30 +836,29 @@ const fallbackThumb="https://placehold.co/640x360/17263b/ffffff?text=UIKI+MODS";
 
 function friendlyError(error){
 const code=error?.code||"";
-if(code.includes("email-already-in-use"))return "This email already has an account. Please login.";
-if(code.includes("invalid-email"))return "Please enter a valid email address.";
+
+if(code.includes("email-already-in-use"))return "Email already registered.";
+if(code.includes("invalid-email"))return "Invalid email address.";
 if(code.includes("weak-password"))return "Password must be at least 8 characters.";
-if(code.includes("invalid-credential"))return "Email or password is incorrect.";
-if(code.includes("network-request-failed"))return "Network error. Check your internet.";
+if(code.includes("invalid-credential"))return "Incorrect email or password.";
 if(code.includes("permission-denied"))return "Firebase permission denied. Check Firestore Rules.";
+
 return error?.message||"Something went wrong.";
 }
+
+/* AUTH */
 
 window.showLogin=()=>{
 $("signupForm").style.display="none";
 $("loginForm").style.display="block";
 setError("signupError","");
-setError("loginError","");
 };
 
 window.showSignup=()=>{
 $("loginForm").style.display="none";
 $("signupForm").style.display="block";
-setError("signupError","");
 setError("loginError","");
 };
-
-/* SIGNUP */
 
 window.signup=async()=>{
 const name=$("signupName").value.trim();
@@ -697,34 +869,33 @@ const password=$("signupPassword").value;
 setError("signupError","");
 
 if(!name||!username||!email||!password){
-setError("signupError","Please fill all fields.");return;
+setError("signupError","Fill all fields.");return;
 }
+
 if(!/^[a-z0-9_]{3,20}$/.test(username)){
 setError("signupError","Username must be 3–20 characters.");return;
 }
+
 if(password.length<8){
 setError("signupError","Password must be at least 8 characters.");return;
 }
 
 $("signupBtn").disabled=true;
-$("signupBtn").textContent="Creating Account...";
 signupInProgress=true;
 
 try{
+
 const usernameRef=doc(db,"usernames",username);
 const existing=await getDoc(usernameRef);
+
 if(existing.exists()){
-setError("signupError","Username already taken.");return;
+setError("signupError","Username already taken.");
+return;
 }
 
 const credential=await createUserWithEmailAndPassword(auth,email,password);
+
 await updateProfile(credential.user,{displayName:name});
-
-await runTransaction(db,async tx=>{
-const check=await tx.get(usernameRef);
-if(check.exists())throw new Error("USERNAME_TAKEN");
-
-tx.set(usernameRef,{uid:credential.user.uid});
 
 const profile={
 uid:credential.user.uid,
@@ -736,53 +907,57 @@ bio:"",
 createdAt:serverTimestamp()
 };
 
+await runTransaction(db,async tx=>{
+const check=await tx.get(usernameRef);
+if(check.exists())throw new Error("USERNAME_TAKEN");
+
+tx.set(usernameRef,{uid:credential.user.uid});
 tx.set(doc(db,"users",credential.user.uid),profile);
+
 tx.set(doc(db,"publicProfiles",credential.user.uid),{
 uid:credential.user.uid,
-name,
-username,
-photoURL:"",
-bio:"",
-createdAt:serverTimestamp()
+name,username,photoURL:"",bio:""
 });
 });
 
 }catch(error){
-setError("signupError",error.message==="USERNAME_TAKEN"?"Username already taken.":friendlyError(error));
+setError("signupError",
+error.message==="USERNAME_TAKEN"?"Username already taken.":friendlyError(error));
 }finally{
 signupInProgress=false;
 $("signupBtn").disabled=false;
-$("signupBtn").textContent="Create Account";
 }
-};
 
-/* LOGIN */
+};
 
 window.login=async()=>{
 setError("loginError","");
-const email=$("loginEmail").value.trim();
-const password=$("loginPassword").value;
-if(!email||!password){setError("loginError","Enter email and password.");return;}
 
-$("loginBtn").disabled=true;
 try{
-await signInWithEmailAndPassword(auth,email,password);
+await signInWithEmailAndPassword(
+auth,
+$("loginEmail").value.trim(),
+$("loginPassword").value
+);
 }catch(error){
 setError("loginError",friendlyError(error));
-}finally{
-$("loginBtn").disabled=false;
 }
 };
 
 /* IMAGE UPLOAD */
 
 async function uploadImage(file){
+
 if(!file)return "";
+
 if(!["image/jpeg","image/png","image/webp"].includes(file.type))
-throw new Error("Choose a JPG, PNG or WEBP image.");
-if(file.size>5*1024*1024)throw new Error("Image must be smaller than 5 MB.");
+throw new Error("Use JPG, PNG or WEBP.");
+
+if(file.size>5*1024*1024)
+throw new Error("Image maximum size is 5 MB.");
 
 const token=await currentUser.getIdToken(true);
+
 const form=new FormData();
 form.append("file",file);
 
@@ -796,21 +971,26 @@ body:form
 });
 
 const result=await response.json().catch(()=>({}));
+
 if(!response.ok||!result.imageUrl)
 throw new Error(result.error||"Image upload failed.");
+
 return result.imageUrl;
 }
 
 /* VIDEO UPLOAD */
 
 async function uploadVideoFile(file){
-if(!file)throw new Error("Choose a video file.");
+
+if(!file)throw new Error("Choose a video.");
 
 const allowed=["video/mp4","video/webm","video/quicktime"];
-if(!allowed.includes(file.type))throw new Error("Only MP4, WEBM and MOV videos are supported.");
+
+if(!allowed.includes(file.type))
+throw new Error("Only MP4, WEBM and MOV supported.");
 
 if(file.size>100*1024*1024)
-throw new Error("Video must be smaller than 100 MB.");
+throw new Error("Video maximum size is 100 MB.");
 
 const token=await currentUser.getIdToken(true);
 
@@ -830,7 +1010,7 @@ fileName:file.name
 const result=await response.json().catch(()=>({}));
 
 if(!response.ok||!result.path||!result.token)
-throw new Error(result.error||"Video upload function failed. Check upload-video deployment.");
+throw new Error(result.error||"Video upload failed.");
 
 const {error}=await supabase.storage
 .from("uiki-images")
@@ -841,31 +1021,43 @@ upsert:false
 
 if(error)throw error;
 
-const publicResult=supabase.storage.from("uiki-images").getPublicUrl(result.path);
-return publicResult.data.publicUrl;
+return supabase.storage
+.from("uiki-images")
+.getPublicUrl(result.path).data.publicUrl;
 }
 
 /* PROFILE */
 
-function setAvatar(url){
-$("profileAvatar").src=url||fallbackAvatar;
-$("headerAvatar").innerHTML=url?'<img src="'+url+'" alt="Profile">':"☻";
+function renderProfile(){
+
+$("profileName").textContent=currentProfile.name||"User";
+$("profileUsername").textContent="@"+currentProfile.username;
+
+const url=currentProfile.photoURL||fallbackAvatar;
+
+$("profileAvatar").src=url;
+
+$("headerAvatar").innerHTML="";
+const img=document.createElement("img");
+img.src=url;
+$("headerAvatar").append(img);
 }
 
 async function recoverProfile(user){
-let snap=await getDoc(doc(db,"users",user.uid));
-if(snap.exists()){
-const data=snap.data();
-if(!data.bio)data.bio="";
-return data;
-}
 
-const usernameSnap=await getDocs(query(collection(db,"usernames"),where("uid","==",user.uid)));
+const snap=await getDoc(doc(db,"users",user.uid));
+
+if(snap.exists())return snap.data();
+
+const usernameSnap=await getDocs(query(
+collection(db,"usernames"),
+where("uid","==",user.uid)
+));
+
 let username=usernameSnap.empty?"":usernameSnap.docs[0].id;
 
 if(!username){
-const base=(user.email||"user").split("@")[0].toLowerCase().replace(/[^a-z0-9_]/g,"").slice(0,12)||"user";
-username=base+"_"+user.uid.slice(0,6).toLowerCase();
+username="user_"+user.uid.slice(0,8).toLowerCase();
 await setDoc(doc(db,"usernames",username),{uid:user.uid});
 }
 
@@ -875,41 +1067,49 @@ name:user.displayName||"User",
 username,
 email:user.email||"",
 photoURL:"",
-bio:"",
-createdAt:serverTimestamp()
+bio:""
 };
 
-await setDoc(doc(db,"users",user.uid),profile,{merge:true});
+await setDoc(doc(db,"users",user.uid),profile);
 await setDoc(doc(db,"publicProfiles",user.uid),{
-uid:user.uid,name:profile.name,username,photoURL:"",bio:""
-},{merge:true});
+uid:user.uid,
+name:profile.name,
+username,
+photoURL:"",
+bio:""
+});
 
 return profile;
 }
 
-function renderProfile(){
-$("profileName").textContent=currentProfile.name||"User";
-$("profileUsername").textContent="@"+(currentProfile.username||"");
-$("profileEmail").textContent=currentUser.email||"";
-setAvatar(currentProfile.photoURL||"");
-}
-
 window.openEditProfile=()=>{
+
 $("editName").value=currentProfile.name||"";
+$("editUsername").value=currentProfile.username||"";
 $("editBio").value=currentProfile.bio||"";
-$("editProfilePanel").classList.remove("hidden");
+
+$("editProfileError").textContent="";
+
+showPage("editProfile");
 };
 
 window.saveProfile=async()=>{
+
 setError("editProfileError","");
+
 const name=$("editName").value.trim();
 const bio=$("editBio").value.trim();
 const file=$("editAvatar").files[0];
 
-if(!name){setError("editProfileError","Name cannot be empty.");return;}
+if(!name){
+setError("editProfileError","Name cannot be empty.");
+return;
+}
 
 try{
+
 let photoURL=currentProfile.photoURL||"";
+
 if(file)photoURL=await uploadImage(file);
 
 await updateProfile(currentUser,{displayName:name});
@@ -927,17 +1127,22 @@ photoURL
 },{merge:true});
 
 currentProfile={...currentProfile,name,bio,photoURL};
+
 renderProfile();
-$("editProfilePanel").classList.add("hidden");
-alert("Profile updated successfully.");
+
+alert("Profile updated successfully!");
+
+openChannel(currentUser.uid);
+
 }catch(error){
 setError("editProfileError",friendlyError(error));
 }
 };
 
-/* AUTH LISTENER */
+/* AUTH STATE */
 
 onAuthStateChanged(auth,async user=>{
+
 const run=++authRunId;
 currentUser=user;
 
@@ -954,46 +1159,52 @@ if(run!==authRunId)return;
 }
 
 try{
+
 currentProfile=await recoverProfile(user);
+
 if(run!==authRunId)return;
 
 $("authScreen").style.display="none";
 $("mainWebsite").style.display="block";
+
 renderProfile();
 
-await Promise.all([loadApps(),loadVideos()]);
+await Promise.all([
+loadApps(),
+loadVideos(),
+loadPosts()
+]);
 
 if(run===authRunId)showPage("home");
 
 }catch(error){
 console.error(error);
-$("authScreen").style.display="flex";
-$("mainWebsite").style.display="none";
 setError("loginError","Profile loading failed: "+friendlyError(error));
 }
 });
 
-/* LOAD APPS */
+/* APPS */
 
 async function loadApps(){
+
 try{
 const snap=await getDocs(collection(db,"apps"));
 allApps=snap.docs.map(d=>({id:d.id,...d.data()}));
-renderApps();
 }catch(error){
-console.error("Apps loading:",error);
+console.error(error);
 allApps=[];
-renderApps();
 }
+
+renderApps();
 }
 
 function makeCard(item){
+
 const card=document.createElement("article");
 card.className="app-card";
 
 const img=document.createElement("img");
 img.src=item.imageUrl||fallbackThumb;
-img.alt=item.title||"App";
 
 const title=document.createElement("h3");
 title.textContent=item.title||"Untitled";
@@ -1012,44 +1223,56 @@ category.textContent=item.category||"";
 
 meta.append(size,category);
 card.append(img,title,desc,meta);
-card.addEventListener("click",()=>openDetails(item.id));
+
+card.onclick=()=>openDetails(item.id);
+
 return card;
 }
 
-window.renderApps=()=>{
+function renderApps(){
+
 const term=$("searchInput").value.toLowerCase().trim();
-const games=$("gamesGrid");
-const apps=$("appsGrid");
-games.replaceChildren();
-apps.replaceChildren();
+
+$("gamesGrid").replaceChildren();
+$("appsGrid").replaceChildren();
 
 const filtered=allApps.filter(a=>
 (a.title||"").toLowerCase().includes(term)||
-(a.description||"").toLowerCase().includes(term)||
-(a.ownerUsername||"").toLowerCase().includes(term)
+(a.description||"").toLowerCase().includes(term)
 );
 
-filtered.filter(a=>a.category==="Game").forEach(a=>games.append(makeCard(a)));
-filtered.filter(a=>a.category==="App").forEach(a=>apps.append(makeCard(a)));
+filtered.filter(a=>a.category==="Game")
+.forEach(a=>$("gamesGrid").append(makeCard(a)));
 
-if(!games.children.length)games.innerHTML='<p class="empty-message">No games found.</p>';
-if(!apps.children.length)apps.innerHTML='<p class="empty-message">No apps found.</p>';
-};
+filtered.filter(a=>a.category==="App")
+.forEach(a=>$("appsGrid").append(makeCard(a)));
+
+if(!$("gamesGrid").children.length)
+$("gamesGrid").innerHTML='<p class="empty-message">No games found.</p>';
+
+if(!$("appsGrid").children.length)
+$("appsGrid").innerHTML='<p class="empty-message">No apps found.</p>';
+}
 
 window.showCategory=category=>{
-const isGame=category==="games";
-$("gamesSection").style.display=isGame?"block":"none";
-$("appsSection").style.display=isGame?"none":"block";
-$("gamesTab").classList.toggle("active",isGame);
-$("appsTab").classList.toggle("active",!isGame);
-showPage("home");
+
+const game=category==="games";
+
+$("gamesSection").style.display=game?"block":"none";
+$("appsSection").style.display=game?"none":"block";
+
+$("gamesTab").classList.toggle("active",game);
+$("appsTab").classList.toggle("active",!game);
+
 };
 
 /* APP DETAILS */
 
 window.openDetails=id=>{
+
 const item=allApps.find(a=>a.id===id);
 if(!item)return;
+
 currentItem=item;
 
 hidePages();
@@ -1058,200 +1281,230 @@ $("detailPage").style.display="block";
 $("detailImage").src=item.imageUrl||fallbackThumb;
 $("detailName").textContent=item.title||"";
 $("detailCategory").textContent=item.category||"";
-$("detailOwner").textContent="Uploaded by @"+(item.ownerUsername||"UIKI MODS");
+$("detailOwner").textContent="@"+(item.ownerUsername||"");
 $("detailSize").textContent=item.size||"—";
-$("detailDownloads").textContent=String(item.downloadCount||0);
+$("detailDownloads").textContent=item.downloadCount||0;
 $("detailVersion").textContent=item.version||"—";
 $("detailDescription").textContent=item.description||"";
+
 $("detailScreenshot").src=item.screenshotUrl||"";
 $("detailScreenshot").style.display=item.screenshotUrl?"block":"none";
 
 const btn=$("installButton");
+
 try{
 const url=new URL(item.downloadUrl||"");
-if(url.protocol==="https:"){
+btn.style.display=url.protocol==="https:"?"block":"none";
 btn.href=url.href;
-btn.style.display="block";
-}else{
-btn.style.display="none";
-}
 }catch{
 btn.style.display="none";
 }
+
 window.scrollTo(0,0);
 };
 
-$("installButton").addEventListener("click",async event=>{
-if(!currentItem?.downloadUrl||!/^https:\/\//i.test(currentItem.downloadUrl)){
-event.preventDefault();return;
-}
+$("installButton").addEventListener("click",async()=>{
+if(!currentItem)return;
+
 try{
 const ref=doc(db,"apps",currentItem.id);
+
 await runTransaction(db,async tx=>{
 const snap=await tx.get(ref);
 if(snap.exists())tx.update(ref,{downloadCount:increment(1)});
 });
-currentItem.downloadCount=(currentItem.downloadCount||0)+1;
-$("detailDownloads").textContent=currentItem.downloadCount;
-}catch(error){console.error("Download count:",error);}
+
+}catch(error){
+console.error(error);
+}
 });
 
-/* UPLOAD GAME / APP */
+/* UPLOAD APP */
 
-$("uploadForm").addEventListener("submit",async event=>{
-event.preventDefault();
+$("uploadForm").addEventListener("submit",async e=>{
+
+e.preventDefault();
 setError("uploadError","");
 
-if(!currentUser||!currentProfile)return;
-
-const title=$("itemTitle").value.trim();
-const description=$("itemDescription").value.trim();
-const category=$("itemCategory").value;
-const size=$("itemSize").value.trim();
-const version=$("itemVersion").value.trim();
-const downloadUrl=$("itemDownload").value.trim();
-const imageFile=$("itemImage").files[0];
-const shotFile=$("itemScreenshot").files[0];
-
-if(!/^https:\/\//i.test(downloadUrl)){
-setError("uploadError","Enter a valid HTTPS download URL.");return;
-}
-
-if(!imageFile){setError("uploadError","Choose an image.");return;}
-
 $("uploadBtn").disabled=true;
-$("uploadBtn").textContent="Uploading...";
 
 try{
-const imageUrl=await uploadImage(imageFile);
-const screenshotUrl=shotFile?await uploadImage(shotFile):"";
+
+const imageUrl=await uploadImage($("itemImage").files[0]);
+
+const screenshotUrl=$("itemScreenshot").files[0]
+?await uploadImage($("itemScreenshot").files[0]):"";
 
 const record={
-title,description,category,size,version,downloadUrl,
-imageUrl,screenshotUrl,downloadCount:0,
+title:$("itemTitle").value.trim(),
+description:$("itemDescription").value.trim(),
+category:$("itemCategory").value,
+size:$("itemSize").value.trim(),
+version:$("itemVersion").value.trim(),
+downloadUrl:$("itemDownload").value.trim(),
+imageUrl,
+screenshotUrl,
+downloadCount:0,
 uid:currentUser.uid,
 ownerName:currentProfile.name,
 ownerUsername:currentProfile.username,
 createdAt:serverTimestamp()
 };
 
+if(!record.downloadUrl.startsWith("https://"))
+throw new Error("Enter a valid HTTPS URL.");
+
 const newDoc=await addDoc(collection(db,"apps"),record);
+
 allApps.push({id:newDoc.id,...record});
+
 $("uploadForm").reset();
+
 renderApps();
-alert("Your "+category.toLowerCase()+" is now public!");
+
+alert("Published successfully!");
+
 showPage("home");
+
 }catch(error){
 setError("uploadError",friendlyError(error));
 }finally{
 $("uploadBtn").disabled=false;
-$("uploadBtn").textContent="Publish";
 }
 });
 
 /* UPLOAD TABS */
 
 window.switchUploadTab=tab=>{
-const video=tab==="video";
-$("appUploadPanel").classList.toggle("hidden",video);
-$("videoUploadPanel").classList.toggle("hidden",!video);
-$("appUploadTab").classList.toggle("active",!video);
-$("videoUploadTab").classList.toggle("active",video);
+
+const app=tab==="app";
+const post=tab==="post";
+const short=tab==="short";
+
+uploadMode=tab;
+
+$("appUploadPanel").classList.toggle("hidden",!app);
+$("videoUploadPanel").classList.toggle("hidden",app||post);
+$("postUploadPanel").classList.toggle("hidden",!post);
+
+["app","video","short","post"].forEach(t=>{
+const id=t==="app"?"appUploadTab":
+t==="video"?"videoUploadTab":
+t==="short"?"shortUploadTab":"postUploadTab";
+
+$(id).classList.toggle("active",t===tab);
+});
+
+$("videoFormHeading").textContent=short?"Upload Short":"Upload Video";
+
 };
 
-/* LOAD VIDEOS */
+/* VIDEOS */
 
 async function loadVideos(){
+
 try{
 const snap=await getDocs(collection(db,"videos"));
 allVideos=snap.docs.map(d=>({id:d.id,...d.data()}));
-await renderVideoLists();
 }catch(error){
-console.error("Videos loading:",error);
+console.error(error);
 allVideos=[];
-renderVideoLists();
 }
+
+renderVideoLists();
 }
 
 function createVideoCard(video){
+
 const card=document.createElement("article");
 card.className="video-card";
 
 const img=document.createElement("img");
 img.className="video-thumb";
 img.src=video.thumbnailUrl||fallbackThumb;
-img.alt=video.title||"Video";
 
 const info=document.createElement("div");
 info.className="video-info";
 
 const title=document.createElement("h3");
-title.textContent=video.title||"Untitled video";
+title.textContent=video.title||"Untitled";
 
 const owner=document.createElement("p");
 owner.textContent="@"+(video.ownerUsername||"creator");
 
 const meta=document.createElement("div");
 meta.className="video-meta";
-meta.textContent=(video.createdAt?.toDate?.().toLocaleDateString()||"Recently uploaded");
+meta.textContent=video.type==="short"?"SHORT":"VIDEO";
 
 info.append(title,owner,meta);
 card.append(img,info);
-card.addEventListener("click",()=>openVideo(video.id));
+
+card.onclick=()=>openVideo(video.id);
+
 return card;
 }
 
-async function getSubcollectionCount(path){
-const snap=await getDocs(collection(db,...path));
-return snap.size;
+function createShortCard(video){
+
+const card=document.createElement("article");
+card.className="short-card";
+
+const img=document.createElement("img");
+img.className="short-thumb";
+img.src=video.thumbnailUrl||fallbackThumb;
+
+const info=document.createElement("div");
+info.className="short-info";
+info.textContent=video.title||"Short";
+
+card.append(img,info);
+card.onclick=()=>openVideo(video.id);
+
+return card;
 }
 
-async function renderVideoLists(){
-const home=$("homeVideos");
-const all=$("allVideos");
-home.replaceChildren();
-all.replaceChildren();
+function renderVideoLists(){
 
-const newest=[...allVideos].sort((a,b)=>{
-const at=a.createdAt?.toMillis?.()||0;
-const bt=b.createdAt?.toMillis?.()||0;
-return bt-at;
+$("homeVideos").replaceChildren();
+$("allVideos").replaceChildren();
+
+const normal=allVideos.filter(v=>v.type!=="short");
+
+normal.forEach(v=>{
+$("allVideos").append(createVideoCard(v));
 });
 
-for(const video of newest.slice(0,5))home.append(createVideoCard(video));
-for(const video of newest)all.append(createVideoCard(video));
+normal.slice(0,5).forEach(v=>{
+$("homeVideos").append(createVideoCard(v));
+});
 
-if(!home.children.length)home.innerHTML='<p class="empty-message">No videos uploaded yet.</p>';
-if(!all.children.length)all.innerHTML='<p class="empty-message">No videos uploaded yet.</p>';
+if(!normal.length){
+$("allVideos").innerHTML='<p class="empty-message">No videos uploaded.</p>';
+$("homeVideos").innerHTML='<p class="empty-message">No videos uploaded.</p>';
+}
 }
 
-/* PUBLISH VIDEO */
+/* UPLOAD VIDEO AND SHORT */
 
-$("videoForm").addEventListener("submit",async event=>{
-event.preventDefault();
+$("videoForm").addEventListener("submit",async e=>{
+
+e.preventDefault();
+
 setError("videoUploadError","");
 
-const title=$("videoTitle").value.trim();
-const description=$("videoDescription").value.trim();
-const videoFile=$("videoFile").files[0];
-const thumbFile=$("videoThumbnail").files[0];
-
-if(!videoFile||!thumbFile){
-setError("videoUploadError","Choose a video and thumbnail.");return;
-}
-
 $("videoUploadBtn").disabled=true;
-$("videoUploadBtn").textContent="Uploading video...";
 
 try{
-const thumbnailUrl=await uploadImage(thumbFile);
-const videoUrl=await uploadVideoFile(videoFile);
+
+const thumbnailUrl=await uploadImage($("videoThumbnail").files[0]);
+const videoUrl=await uploadVideoFile($("videoFile").files[0]);
 
 const record={
-title,
-description,
+title:$("videoTitle").value.trim(),
+description:$("videoDescription").value.trim(),
 videoUrl,
 thumbnailUrl,
+type:uploadMode==="short"?"short":"video",
 uid:currentUser.uid,
 ownerName:currentProfile.name,
 ownerUsername:currentProfile.username,
@@ -1259,29 +1512,129 @@ createdAt:serverTimestamp()
 };
 
 const newDoc=await addDoc(collection(db,"videos"),record);
+
 allVideos.unshift({id:newDoc.id,...record});
 
 $("videoForm").reset();
-await renderVideoLists();
-alert("Video uploaded successfully!");
+
+renderVideoLists();
+
+alert(uploadMode==="short"?"Short published!":"Video published!");
+
 showPage("videos");
 
 }catch(error){
-console.error(error);
 setError("videoUploadError",friendlyError(error));
 }finally{
 $("videoUploadBtn").disabled=false;
-$("videoUploadBtn").textContent="Upload Video";
 }
 });
 
-/* OPEN VIDEO */
+/* POSTS */
+
+async function loadPosts(){
+
+try{
+const snap=await getDocs(collection(db,"posts"));
+allPosts=snap.docs.map(d=>({id:d.id,...d.data()}));
+}catch(error){
+console.error(error);
+allPosts=[];
+}
+}
+
+function createPostCard(post){
+
+const card=document.createElement("article");
+card.className="post-card";
+
+const user=document.createElement("div");
+user.className="post-user";
+
+const avatar=document.createElement("img");
+avatar.className="post-avatar";
+avatar.src=post.ownerPhoto||fallbackAvatar;
+
+const info=document.createElement("div");
+
+const name=document.createElement("strong");
+name.textContent=post.ownerName||"Creator";
+
+const username=document.createElement("span");
+username.textContent="@"+(post.ownerUsername||"user");
+
+info.append(name,username);
+user.append(avatar,info);
+
+const text=document.createElement("p");
+text.className="post-text";
+text.textContent=post.text||"";
+
+card.append(user,text);
+
+if(post.imageUrl){
+const image=document.createElement("img");
+image.className="post-image";
+image.src=post.imageUrl;
+card.append(image);
+}
+
+return card;
+}
+
+$("postForm").addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+setError("postUploadError","");
+
+$("postUploadBtn").disabled=true;
+
+try{
+
+const text=$("postText").value.trim();
+const file=$("postImage").files[0];
+
+let imageUrl="";
+
+if(file)imageUrl=await uploadImage(file);
+
+const record={
+text,
+imageUrl,
+uid:currentUser.uid,
+ownerName:currentProfile.name,
+ownerUsername:currentProfile.username,
+ownerPhoto:currentProfile.photoURL||"",
+createdAt:serverTimestamp()
+};
+
+const newDoc=await addDoc(collection(db,"posts"),record);
+
+allPosts.unshift({id:newDoc.id,...record});
+
+$("postForm").reset();
+
+alert("Post published successfully!");
+
+openChannel(currentUser.uid);
+
+}catch(error){
+setError("postUploadError",friendlyError(error));
+}finally{
+$("postUploadBtn").disabled=false;
+}
+});
+
+/* VIDEO PLAYER */
 
 window.openVideo=async id=>{
+
 const video=allVideos.find(v=>v.id===id);
 if(!video)return;
 
 currentVideo=video;
+
 hidePages();
 $("videoPage").style.display="block";
 
@@ -1293,12 +1646,16 @@ $("watchTitle").textContent=video.title||"";
 $("watchMeta").textContent="@"+(video.ownerUsername||"creator");
 $("watchDescription").textContent=video.description||"";
 
+$("commentInput").value="";
+
 const likeRef=doc(db,"videos",id,"likes",currentUser.uid);
 const likeSnap=await getDoc(likeRef);
-$("likeButton").classList.toggle("active",likeSnap.exists());
+
 $("likeButton").textContent=likeSnap.exists()?"♥ Liked":"♡ Like";
+$("likeButton").classList.toggle("active",likeSnap.exists());
 
 await loadComments();
+
 window.scrollTo(0,0);
 };
 
@@ -1306,28 +1663,32 @@ window.openVideoChannel=()=>{
 if(currentVideo)openChannel(currentVideo.uid);
 };
 
-/* LIKES */
+/* LIKE */
 
 window.toggleLike=async()=>{
-if(!currentVideo||!currentUser)return;
+
+if(!currentVideo)return;
 
 const ref=doc(db,"videos",currentVideo.id,"likes",currentUser.uid);
 
 try{
+
 const snap=await getDoc(ref);
+
 if(snap.exists()){
-const {deleteDoc}=await import("https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js");
 await deleteDoc(ref);
-$("likeButton").classList.remove("active");
 $("likeButton").textContent="♡ Like";
+$("likeButton").classList.remove("active");
 }else{
 await setDoc(ref,{
 uid:currentUser.uid,
 createdAt:serverTimestamp()
 });
-$("likeButton").classList.add("active");
+
 $("likeButton").textContent="♥ Liked";
+$("likeButton").classList.add("active");
 }
+
 }catch(error){
 alert(friendlyError(error));
 }
@@ -1336,16 +1697,19 @@ alert(friendlyError(error));
 /* COMMENTS */
 
 async function loadComments(){
+
 $("commentsList").replaceChildren();
+
 if(!currentVideo)return;
 
 try{
+
 const snap=await getDocs(collection(db,"videos",currentVideo.id,"comments"));
-const comments=snap.docs.map(d=>d.data());
 
-comments.sort((a,b)=>(a.createdAt?.toMillis?.()||0)-(b.createdAt?.toMillis?.()||0));
+snap.docs.forEach(d=>{
 
-for(const item of comments){
+const item=d.data();
+
 const box=document.createElement("div");
 box.className="comment";
 
@@ -1357,115 +1721,272 @@ message.textContent=item.text||"";
 
 box.append(name,message);
 $("commentsList").append(box);
+
+});
+
+if(!snap.size){
+$("commentsList").innerHTML='<p class="empty-message">No comments yet.</p>';
 }
 
-if(!comments.length)$("commentsList").innerHTML='<p class="empty-message">No comments yet.</p>';
-
 }catch(error){
-console.error("Comments:",error);
+console.error(error);
 }
 }
 
 window.postComment=async()=>{
-if(!currentVideo)return;
-const input=$("commentInput");
-const message=input.value.trim();
-if(!message)return;
+
+const message=$("commentInput").value.trim();
+
+if(!message||!currentVideo)return;
 
 try{
+
 await addDoc(collection(db,"videos",currentVideo.id,"comments"),{
 uid:currentUser.uid,
 username:currentProfile.username,
 text:message,
 createdAt:serverTimestamp()
 });
-input.value="";
+
+$("commentInput").value="";
 await loadComments();
+
 }catch(error){
 alert(friendlyError(error));
 }
 };
 
-/* CHANNEL */
+/* CHANNEL TABS */
+
+window.switchChannelTab=(tab,button)=>{
+
+document.querySelectorAll(".channel-content").forEach(el=>{
+el.classList.remove("active");
+});
+
+document.querySelectorAll(".channel-tabs button").forEach(el=>{
+el.classList.remove("active");
+});
+
+const map={
+home:"channelHome",
+videos:"channelVideosContent",
+shorts:"channelShortsContent",
+posts:"channelPostsContent",
+apps:"channelAppsContent"
+};
+
+$(map[tab]).classList.add("active");
+button.classList.add("active");
+};
+
+/* PUBLIC CHANNEL */
 
 window.openChannel=async uid=>{
+
 if(!uid)return;
 
 try{
+
 const snap=await getDoc(doc(db,"publicProfiles",uid));
+
 if(!snap.exists()){
-alert("Channel profile not found.");return;
+alert("Channel not found.");
+return;
 }
 
 currentChannel={uid,...snap.data()};
+
 hidePages();
 $("channelPage").style.display="block";
 
 $("channelAvatar").src=currentChannel.photoURL||fallbackAvatar;
 $("channelName").textContent=currentChannel.name||"Creator";
 $("channelUsername").textContent="@"+(currentChannel.username||"");
-$("channelBio").textContent=currentChannel.bio||"No bio added.";
-
-const [subSnap,videoSnap,appSnap]=await Promise.all([
-getDocs(collection(db,"subscriptions",uid,"subscribers")),
-getDocs(query(collection(db,"videos"),where("uid","==",uid))),
-getDocs(query(collection(db,"apps"),where("uid","==",uid)))
-]);
-
-$("channelSubscribers").textContent=subSnap.size;
-$("channelVideoCount").textContent=videoSnap.size;
-
-$("channelVideos").replaceChildren();
-$("channelApps").replaceChildren();
-
-videoSnap.docs.forEach(d=>$("channelVideos").append(createVideoCard({id:d.id,...d.data()})));
-appSnap.docs.forEach(d=>$("channelApps").append(makeCard({id:d.id,...d.data()})));
+$("channelBio").textContent=currentChannel.bio||"No description added.";
 
 const own=uid===currentUser.uid;
-const subscribeButton=$("subscribeButton");
-subscribeButton.style.display=own?"none":"block";
+
+$("channelEditButton").classList.toggle("hidden",!own);
+$("subscribeButton").style.display=own?"none":"inline-block";
+
+const [subs,vids,apps,posts]=await Promise.all([
+
+getDocs(collection(db,"subscriptions",uid,"subscribers")),
+
+getDocs(query(collection(db,"videos"),where("uid","==",uid))),
+
+getDocs(query(collection(db,"apps"),where("uid","==",uid))),
+
+getDocs(query(collection(db,"posts"),where("uid","==",uid)))
+
+]);
+
+const videos=vids.docs.map(d=>({id:d.id,...d.data()}));
+const appsData=apps.docs.map(d=>({id:d.id,...d.data()}));
+const postsData=posts.docs.map(d=>({id:d.id,...d.data()}));
+
+const normal=videos.filter(v=>v.type!=="short");
+const shorts=videos.filter(v=>v.type==="short");
+
+$("channelSubscribers").textContent=subs.size;
+$("channelVideoCount").textContent=normal.length;
+$("channelShortCount").textContent=shorts.length;
+
+/* SUBSCRIBE BUTTON */
 
 if(!own){
-const mySub=await getDoc(doc(db,"subscriptions",uid,"subscribers",currentUser.uid));
-subscribeButton.textContent=mySub.exists()?"Unsubscribe":"Subscribe";
-subscribeButton.classList.toggle("active",mySub.exists());
+
+const mySub=await getDoc(
+doc(db,"subscriptions",uid,"subscribers",currentUser.uid)
+);
+
+$("subscribeButton").textContent=mySub.exists()?"Subscribed":"Subscribe";
+
+$("subscribeButton").classList.toggle("active",mySub.exists());
 }
 
+/* VIDEOS */
+
+$("channelVideos").replaceChildren();
+
+normal.forEach(v=>{
+$("channelVideos").append(createVideoCard(v));
+});
+
+if(!normal.length){
+$("channelVideos").innerHTML='<p class="empty-message">No videos yet.</p>';
+}
+
+/* SHORTS */
+
+$("channelShorts").replaceChildren();
+
+shorts.forEach(v=>{
+$("channelShorts").append(createShortCard(v));
+});
+
+if(!shorts.length){
+$("channelShorts").innerHTML='<p class="empty-message">No shorts yet.</p>';
+}
+
+/* POSTS */
+
+$("channelPosts").replaceChildren();
+
+postsData.sort((a,b)=>
+(b.createdAt?.toMillis?.()||0)-
+(a.createdAt?.toMillis?.()||0)
+);
+
+postsData.forEach(p=>{
+$("channelPosts").append(createPostCard(p));
+});
+
+if(!postsData.length){
+$("channelPosts").innerHTML='<p class="empty-message">No posts yet.</p>';
+}
+
+/* APPS */
+
+$("channelApps").replaceChildren();
+
+appsData.forEach(a=>{
+$("channelApps").append(makeCard(a));
+});
+
+if(!appsData.length){
+$("channelApps").innerHTML='<p class="empty-message">No games or apps yet.</p>';
+}
+
+/* HOME TAB */
+
+$("channelHomeContent").replaceChildren();
+
+const latest=[
+...videos.map(v=>({...v,contentType:"video"})),
+...postsData.map(p=>({...p,contentType:"post"}))
+].sort((a,b)=>
+(b.createdAt?.toMillis?.()||0)-
+(a.createdAt?.toMillis?.()||0)
+);
+
+latest.forEach(item=>{
+
+if(item.contentType==="post"){
+$("channelHomeContent").append(createPostCard(item));
+}else if(item.type==="short"){
+$("channelHomeContent").append(createShortCard(item));
+}else{
+$("channelHomeContent").append(createVideoCard(item));
+}
+
+});
+
+if(!latest.length){
+$("channelHomeContent").innerHTML='<p class="empty-message">This channel has no uploads yet.</p>';
+}
+
+/* DEFAULT TAB */
+
+document.querySelectorAll(".channel-tabs button").forEach((b,i)=>{
+b.classList.toggle("active",i===0);
+});
+
+document.querySelectorAll(".channel-content").forEach((el,i)=>{
+el.classList.toggle("active",i===0);
+});
+
 window.scrollTo(0,0);
+
 }catch(error){
 console.error(error);
-alert("Could not open channel: "+friendlyError(error));
+alert("Channel loading failed: "+friendlyError(error));
 }
 };
 
-/* SUBSCRIBE / UNSUBSCRIBE */
+/* SUBSCRIBE */
 
 window.toggleSubscribe=async()=>{
+
 if(!currentChannel||currentChannel.uid===currentUser.uid)return;
 
 const channelUid=currentChannel.uid;
+
 const ref=doc(db,"subscriptions",channelUid,"subscribers",currentUser.uid);
+
 const btn=$("subscribeButton");
+
 btn.disabled=true;
 
 try{
+
 const snap=await getDoc(ref);
+
 if(snap.exists()){
-const {deleteDoc}=await import("https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js");
+
 await deleteDoc(ref);
+
 btn.textContent="Subscribe";
 btn.classList.remove("active");
+
 }else{
+
 await setDoc(ref,{
 uid:currentUser.uid,
 username:currentProfile.username,
 createdAt:serverTimestamp()
 });
-btn.textContent="Unsubscribe";
+
+btn.textContent="Subscribed";
 btn.classList.add("active");
+
 }
 
-const count=await getDocs(collection(db,"subscriptions",channelUid,"subscribers"));
+const count=await getDocs(
+collection(db,"subscriptions",channelUid,"subscribers")
+);
+
 $("channelSubscribers").textContent=count.size;
 
 }catch(error){
@@ -1475,9 +1996,10 @@ btn.disabled=false;
 }
 };
 
-/* SEARCH ALL */
+/* SEARCH */
 
 window.searchEverything=async()=>{
+
 const term=$("searchInput").value.trim().toLowerCase();
 
 if(!term){
@@ -1492,98 +2014,145 @@ $("searchChannels").replaceChildren();
 $("searchVideos").replaceChildren();
 $("searchApps").replaceChildren();
 
-const channelSnap=await getDocs(collection(db,"publicProfiles"));
-const channels=channelSnap.docs.map(d=>({uid:d.id,...d.data()}));
+try{
 
-const matchedChannels=channels.filter(c=>
-(c.username||"").toLowerCase().includes(term)||
-(c.name||"").toLowerCase().includes(term)
+const channelSnap=await getDocs(collection(db,"publicProfiles"));
+
+const channels=channelSnap.docs.map(d=>({
+uid:d.id,...d.data()
+}));
+
+const matched=channels.filter(c=>
+(c.name||"").toLowerCase().includes(term)||
+(c.username||"").toLowerCase().includes(term)
 );
 
-matchedChannels.forEach(c=>{
-const button=document.createElement("button");
-button.className="action-btn";
-button.style.display="block";
-button.style.width="100%";
-button.style.marginBottom="9px";
-button.textContent=(c.name||"Creator")+"  @"+(c.username||"");
-button.onclick=()=>openChannel(c.uid);
-$("searchChannels").append(button);
+matched.forEach(c=>{
+
+const card=document.createElement("div");
+card.className="post-card";
+card.style.display="flex";
+card.style.alignItems="center";
+card.style.gap="12px";
+card.style.cursor="pointer";
+
+const avatar=document.createElement("img");
+avatar.className="post-avatar";
+avatar.src=c.photoURL||fallbackAvatar;
+
+const info=document.createElement("div");
+
+const name=document.createElement("strong");
+name.textContent=c.name||"Creator";
+
+const username=document.createElement("p");
+username.textContent="@"+(c.username||"");
+username.style.color="#9caac1";
+username.style.fontSize="12px";
+username.style.marginTop="5px";
+
+info.append(name,username);
+card.append(avatar,info);
+
+card.onclick=()=>openChannel(c.uid);
+
+$("searchChannels").append(card);
+
 });
 
-if(!matchedChannels.length)$("searchChannels").innerHTML='<p class="empty-message">No channels found.</p>';
+if(!matched.length){
+$("searchChannels").innerHTML='<p class="empty-message">No channels found.</p>';
+}
 
-const matchedVideos=allVideos.filter(v=>
+const videos=allVideos.filter(v=>
 (v.title||"").toLowerCase().includes(term)||
 (v.ownerUsername||"").toLowerCase().includes(term)
 );
-matchedVideos.forEach(v=>$("searchVideos").append(createVideoCard(v)));
 
-if(!matchedVideos.length)$("searchVideos").innerHTML='<p class="empty-message">No videos found.</p>';
+videos.forEach(v=>{
+$("searchVideos").append(createVideoCard(v));
+});
 
-const matchedApps=allApps.filter(a=>
+if(!videos.length){
+$("searchVideos").innerHTML='<p class="empty-message">No videos found.</p>';
+}
+
+const apps=allApps.filter(a=>
 (a.title||"").toLowerCase().includes(term)||
-(a.description||"").toLowerCase().includes(term)||
-(a.ownerUsername||"").toLowerCase().includes(term)
+(a.description||"").toLowerCase().includes(term)
 );
-matchedApps.forEach(a=>$("searchApps").append(makeCard(a)));
 
-if(!matchedApps.length)$("searchApps").innerHTML='<p class="empty-message">No games or apps found.</p>';
+apps.forEach(a=>{
+$("searchApps").append(makeCard(a));
+});
+
+if(!apps.length){
+$("searchApps").innerHTML='<p class="empty-message">No games or apps found.</p>';
+}
+
+}catch(error){
+console.error(error);
+}
 };
 
 /* PAGE NAVIGATION */
 
 function hidePages(){
-["homePage","detailPage","profilePage","uploadPage","videosPage","videoPage","channelPage","searchPage"].forEach(id=>{
+
+[
+"homePage","detailPage","videosPage","videoPage",
+"channelPage","editProfilePage","uploadPage",
+"searchPage","profilePage"
+].forEach(id=>{
 $(id).style.display="none";
 });
-document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
+
+document.querySelectorAll(".bottom-nav button").forEach(b=>{
+b.classList.remove("active");
+});
 }
 
 window.showPage=page=>{
+
 hidePages();
 
 if(page==="home"||page==="games"||page==="apps"){
+
 $("homePage").style.display="block";
 $("homeNav").classList.add("active");
 
 if(page==="games"){
-$("gamesSection").style.display="block";
-$("appsSection").style.display="none";
-$("gamesTab").classList.add("active");
-$("appsTab").classList.remove("active");
-$("gamesNav").classList.add("active");
+showCategory("games");
 }else if(page==="apps"){
-$("gamesSection").style.display="none";
-$("appsSection").style.display="block";
-$("appsTab").classList.add("active");
-$("gamesTab").classList.remove("active");
-$("appsNav").classList.add("active");
+showCategory("apps");
 }else{
-$("gamesSection").style.display="block";
-$("appsSection").style.display="none";
-$("gamesTab").classList.add("active");
-$("appsTab").classList.remove("active");
+showCategory("games");
 }
+
 }else if(page==="videos"){
+
 $("videosPage").style.display="block";
 $("videosNav").classList.add("active");
-}else if(page==="profile"){
-$("profilePage").style.display="block";
-renderProfile();
-$("myUploadsGrid").replaceChildren();
-$("myVideos").replaceChildren();
 
-allApps.filter(a=>a.uid===currentUser.uid).forEach(a=>$("myUploadsGrid").append(makeCard(a)));
-allVideos.filter(v=>v.uid===currentUser.uid).forEach(v=>$("myVideos").append(createVideoCard(v)));
 }else if(page==="upload"){
+
 $("uploadPage").style.display="block";
 $("uploadNav").classList.add("active");
-}
-window.scrollTo({top:0,behavior:"smooth"});
-};
 
-window.backHome=()=>showPage("home");
+}else if(page==="profile"){
+
+$("profilePage").style.display="block";
+$("profileNav").classList.add("active");
+renderProfile();
+
+}else if(page==="editProfile"){
+
+$("editProfilePage").style.display="block";
+}
+
+window.scrollTo({top:0,behavior:"smooth"});
+
+};
 
 /* LOGOUT */
 
