@@ -1832,6 +1832,19 @@ const shorts=videos.filter(v=>v.type==="short");
 $("channelSubscribers").textContent=subs.size;
 $("channelVideoCount").textContent=normal.length;
 $("channelShortCount").textContent=shorts.length;
+  window.viewMyChannel = function () {
+    if (!currentUser) {
+        alert("Please login first.");
+        return;
+    }
+
+    if (typeof window.openChannel !== "function") {
+        alert("Channel function is not available.");
+        return;
+    }
+
+    window.openChannel(currentUser.uid);
+};
 
 /* SUBSCRIBE BUTTON */
 
